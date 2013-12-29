@@ -1,0 +1,13 @@
+# Autoload
+/autoload.php
+
+# Composer
+/bin
+/installer
+/composer.phar
+/composer.lock
+/vendor
+
+# PHPUnit
+/phpunit.xml
+/report

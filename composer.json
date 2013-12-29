@@ -1,0 +1,30 @@
+{
+    "name": "egeloen/ordered-form",
+    "description": "Provides a form ordering support with the Symfony2 form component.",
+    "keywords": [ "symfony2", "form", "order" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric GELOEN",
+            "email": "geloen.eric@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/form": ">=2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": { "Ivory\\OrderedForm": "src/" }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.9-dev"
+        }
+    }
+}

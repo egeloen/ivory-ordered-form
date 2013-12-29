@@ -3,8 +3,6 @@ language: php
 php: 5.3.3
 
 env:
-    - SYMFONY_FORM_VERSION="2.1.*"
-    - SYMFONY_FORM_VERSION="2.2.*"
     - SYMFONY_FORM_VERSION="2.3.*"
     - SYMFONY_FORM_VERSION="2.4.*"
 

@@ -14,12 +14,10 @@ use Ivory\OrderedForm\Orderer\FormOrdererFactory;
 use Ivory\OrderedForm\Extension\OrderedFormExtension;
 use Ivory\OrderedForm\Extension\OrderedButtonExtension;
 
-$resolvedFormTypeFactory = new OrderedResolvedFormTypeFactory(
-    new FormOrdererFactory()
-);
-
 $formFactory = Forms::createFormFactory()
-    ->setResolvedTypeFactory($orderedResolvedFormTypeFactory)
+    ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(
+        new FormOrdererFactory()
+    ))
     ->addTypeExtension(new OrderedFormExtension())
     ->addTypeExtension(new OrderedButtonExtension());
 

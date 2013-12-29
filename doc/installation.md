@@ -5,7 +5,7 @@ Require the library in your composer.json file:
 ``` json
 {
     "require": {
-        "egeloen/ordered-form": "0.9.*",
+        "egeloen/ordered-form": "~1.0",
     }
 }
 ```

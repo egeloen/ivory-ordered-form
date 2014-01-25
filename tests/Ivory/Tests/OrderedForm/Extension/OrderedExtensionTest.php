@@ -11,8 +11,7 @@
 
 namespace Ivory\Tests\OrderedForm\Extension;
 
-use Ivory\OrderedForm\Extension\OrderedButtonExtension;
-use Ivory\OrderedForm\Extension\OrderedFormExtension;
+use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Orderer\FormOrdererFactory;
@@ -20,11 +19,11 @@ use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
- * Ordered form extension test.
+ * Ordered extension test.
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedFormExtensionTest extends TypeTestCase
+class OrderedExtensionTest extends TypeTestCase
 {
     /** @var \Symfony\Component\Form\DataMapperInterface */
     protected $dataMapper;
@@ -38,8 +37,7 @@ class OrderedFormExtensionTest extends TypeTestCase
 
         $this->factory = Forms::createFormFactoryBuilder()
             ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(new FormOrdererFactory()))
-            ->addTypeExtension(new OrderedFormExtension())
-            ->addTypeExtension(new OrderedButtonExtension())
+            ->addExtension(new OrderedExtension())
             ->getFormFactory();
 
         $this->dataMapper = $this->getMock('Symfony\Component\Form\DataMapperInterface');

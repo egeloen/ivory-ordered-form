@@ -11,15 +11,13 @@ To make the library working, you need to set up the Symfony2 form component the 
 use Symfony\Component\Form\Forms;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Orderer\FormOrdererFactory;
-use Ivory\OrderedForm\Extension\OrderedFormExtension;
-use Ivory\OrderedForm\Extension\OrderedButtonExtension;
+use Ivory\OrderedForm\Extension\OrderedExtension;
 
 $formFactory = Forms::createFormFactory()
     ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(
         new FormOrdererFactory()
     ))
-    ->addTypeExtension(new OrderedFormExtension())
-    ->addTypeExtension(new OrderedButtonExtension());
+    ->addExtension(new OrderedExtension());
 
 $form = $formFactory->createBuilder()
     ->add('dueDate', 'date')

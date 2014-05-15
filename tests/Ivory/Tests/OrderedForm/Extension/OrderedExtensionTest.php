@@ -12,40 +12,30 @@
 namespace Ivory\Tests\OrderedForm\Extension;
 
 use Ivory\OrderedForm\Extension\OrderedExtension;
-use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Orderer\FormOrdererFactory;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
  * Ordered extension test.
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedExtensionTest extends TypeTestCase
+class OrderedExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var \Symfony\Component\Form\DataMapperInterface */
-    protected $dataMapper;
+    /** @var \Ivory\OrderedForm\Builder\OrderedFormBuilder */
+    protected $builder;
 
     /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
-        parent::setUp();
-
-        $this->factory = Forms::createFormFactoryBuilder()
+        $this->builder = Forms::createFormFactoryBuilder()
             ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(new FormOrdererFactory()))
             ->addExtension(new OrderedExtension())
-            ->getFormFactory();
-
-        $this->dataMapper = $this->getMock('Symfony\Component\Form\DataMapperInterface');
-
-        $this->builder = new OrderedFormBuilder(null, null, $this->dispatcher, $this->factory);
-        $this->builder
-            ->setCompound(true)
-            ->setDataMapper($this->dataMapper);
+            ->getFormFactory()
+            ->createBuilder();
     }
 
     /**
@@ -53,9 +43,7 @@ class OrderedExtensionTest extends TypeTestCase
      */
     protected function tearDown()
     {
-        parent::tearDown();
-
-        unset($this->dataMapper);
+        unset($this->builder);
     }
 
     /**

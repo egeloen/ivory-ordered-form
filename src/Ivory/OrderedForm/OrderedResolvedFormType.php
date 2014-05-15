@@ -18,9 +18,7 @@ use Ivory\OrderedForm\Orderer\FormOrdererInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\ButtonTypeInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormTypeInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\ResolvedFormType;
 use Symfony\Component\Form\ResolvedFormTypeInterface;
 use Symfony\Component\Form\SubmitButtonTypeInterface;
@@ -52,42 +50,12 @@ class OrderedResolvedFormType extends ResolvedFormType
     /**
      * {@inheritdoc}
      */
-    public function createBuilder(FormFactoryInterface $factory, $name, array $options = array())
-    {
-        $options = $this->getOptionsResolver()->resolve($options);
-        $dataClass = isset($options['data_class']) ? $options['data_class'] : null;
-
-        $builder = $this->newBuilder($name, $dataClass, $factory, $options);
-        $builder->setType($this);
-
-        $this->buildForm($builder, $options);
-
-        return $builder;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createView(FormInterface $form, FormView $parent = null)
-    {
-        $options = $form->getConfig()->getOptions();
-        $view = $this->newView($parent);
-        $this->buildView($view, $form, $options);
-
-        foreach ($this->orderer->order($form) as $name) {
-            $view->children[$name] = $form[$name]->createView($view);
-        }
-
-        $this->finishView($view, $form, $options);
-
-        return $view;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function newBuilder($name, $dataClass, FormFactoryInterface $factory, array $options)
-    {
+    protected function newBuilder(
+        $name,
+        $dataClass,
+        FormFactoryInterface $factory,
+        array $options
+    ) {
         $innerType = $this->getInnerType();
 
         if ($innerType instanceof ButtonTypeInterface) {
@@ -98,6 +66,13 @@ class OrderedResolvedFormType extends ResolvedFormType
             return new OrderedSubmitButtonBuilder($name, $options);
         }
 
-        return new OrderedFormBuilder($name, $dataClass, new EventDispatcher(), $factory, $options);
+        return new OrderedFormBuilder(
+            $name,
+            $dataClass,
+            new EventDispatcher(),
+            $factory,
+            $this->orderer,
+            $options
+        );
     }
 }

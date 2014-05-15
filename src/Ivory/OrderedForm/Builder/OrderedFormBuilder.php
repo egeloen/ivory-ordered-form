@@ -13,8 +13,11 @@ namespace Ivory\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Exception\OrderedConfigurationException;
 use Ivory\OrderedForm\OrderedFormConfigInterface;
+use Ivory\OrderedForm\Orderer\FormOrdererInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Exception\BadMethodCallException;
+use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * Ordered form builder.
@@ -23,8 +26,34 @@ use Symfony\Component\Form\Exception\BadMethodCallException;
  */
 class OrderedFormBuilder extends FormBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
+    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
+    protected $orderer;
+
     /** @var null|string|array */
     protected $position;
+
+    /**
+     * Creates an ordered form builder.
+     *
+     * @param string                                                      $name       The form name.
+     * @param string                                                      $dataClass  The form data class.
+     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher The form event dispatcher.
+     * @param \Symfony\Component\Form\FormFactoryInterface                $factory    The form factory.
+     * @param \Ivory\OrderedForm\Orderer\FormOrdererInterface             $orderer    The form orderer.
+     * @param array                                                       $options    The form options.
+     */
+    public function __construct(
+        $name,
+        $dataClass,
+        EventDispatcherInterface $dispatcher,
+        FormFactoryInterface $factory,
+        FormOrdererInterface $orderer,
+        array $options = array()
+    ) {
+        parent::__construct($name, $dataClass, $dispatcher, $factory, $options);
+
+        $this->orderer = $orderer;
+    }
 
     /**
      * {@inheritdoc}
@@ -54,5 +83,21 @@ class OrderedFormBuilder extends FormBuilder implements OrderedFormConfigBuilder
         $this->position = $position;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getForm()
+    {
+        $form = parent::getForm();
+
+        foreach ($this->orderer->order($form) as $name) {
+            $child = $form->get($name);
+            $form->remove($name);
+            $form->add($child);
+        }
+
+        return $form;
     }
 }

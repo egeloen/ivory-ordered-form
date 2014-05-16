@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 1.0.1 (????-??-??)
+### 1.0.1 (2014-05-16)
 
  * 9240dc1 - Add coveralls support
  * df1b0b2 - Fix CSRF error due to missing form view child

@@ -10,7 +10,9 @@ before_script:
     - composer require --no-update symfony/form:${SYMFONY_FORM_VERSION}
     - composer install --prefer-source
 
-script: bin/phpunit
+script: bin/phpunit --coverage-clover clover.xml
+
+after_script: bin/coveralls
 
 branches:
     only: master

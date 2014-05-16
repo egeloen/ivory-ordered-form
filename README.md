@@ -1,6 +1,7 @@
 # README
 
 [![Build Status](https://secure.travis-ci.org/egeloen/ivory-ordered-form.png)](http://travis-ci.org/egeloen/ivory-ordered-form)
+[![Coverage Status](https://coveralls.io/repos/egeloen/ivory-ordered-form/badge.png?branch=master)](https://coveralls.io/r/egeloen/ivory-ordered-form?branch=master)
 
 The library allows to order your Symfony2 form fields by adding the position option. A position can either be first,
 last or an associative array describing before and/or after field.

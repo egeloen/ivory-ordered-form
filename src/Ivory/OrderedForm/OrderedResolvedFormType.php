@@ -61,6 +61,11 @@ class OrderedResolvedFormType extends ResolvedFormType
 
         foreach ($this->orderer->order($form) as $name) {
             $view->children[$name] = $children[$name];
+            unset($children[$name]);
+        }
+
+        foreach ($children as $name => $child) {
+            $view->children[$name] = $child;
         }
     }
 

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.0.2 (????-??-??)
+
+ * bf993e9 - [README] Add scrutinizer CI badge
+ * c15ac7e - [Exception] Fix PHPDoc
+
 ### 1.0.1 (2014-05-16)
 
  * 9240dc1 - Add coveralls support

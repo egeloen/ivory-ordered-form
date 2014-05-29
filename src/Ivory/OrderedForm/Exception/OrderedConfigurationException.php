@@ -26,7 +26,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      * @param array  $stack    The circular stack.
      * @param string $position The position (before|after).
      *
-     * @return \Ivory\OrderedForm\Exception\CircularConfigurationException The "CIRCULAR DIFFERED" exception.
+     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "CIRCULAR DIFFERED" exception.
      */
     static public function createCircularDiffered(array $stack, $position)
     {

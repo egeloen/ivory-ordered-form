@@ -2,6 +2,7 @@
 
 ### 1.0.2 (????-??-??)
 
+ * 39082db - [Travis] Add Symfony 2.5
  * bf993e9 - [README] Add scrutinizer CI badge
  * c15ac7e - [Exception] Fix PHPDoc
 

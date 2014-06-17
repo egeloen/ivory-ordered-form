@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 1.0.2 (????-??-??)
+### 1.0.2 (2014-06-17)
 
  * 39082db - [Travis] Add Symfony 2.5
  * bf993e9 - [README] Add scrutinizer CI badge

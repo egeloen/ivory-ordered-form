@@ -18,7 +18,7 @@
         "satooshi/php-coveralls": "~0.6"
     },
     "autoload": {
-        "psr-0": { "Ivory\\OrderedForm": "src/" }
+        "psr-4": { "Ivory\\OrderedForm\\": "src/Ivory/OrderedForm/" }
     },
     "config": {
         "bin-dir": "bin/"

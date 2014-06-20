@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 1.0.3 (????-??-??)
+
+ * 75c3a79 - [Composer] Upgrade to PSR-4
+
 ### 1.0.2 (2014-06-17)
 
  * 39082db - [Travis] Add Symfony 2.5

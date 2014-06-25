@@ -3,6 +3,8 @@
 [![Build Status](https://secure.travis-ci.org/egeloen/ivory-ordered-form.png)](http://travis-ci.org/egeloen/ivory-ordered-form)
 [![Coverage Status](https://coveralls.io/repos/egeloen/ivory-ordered-form/badge.png?branch=master)](https://coveralls.io/r/egeloen/ivory-ordered-form?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/?branch=master)
+[![Dependency Status](https://www.versioneye.com/php/egeloen:ordered-form/badge.svg)](https://www.versioneye.com/php/egeloen:ordered-form)
+
 [![Latest Stable Version](https://poser.pugx.org/egeloen/ordered-form/v/stable.svg)](https://packagist.org/packages/egeloen/ordered-form)
 [![Latest Unstable Version](https://poser.pugx.org/egeloen/ordered-form/v/unstable.svg)](https://packagist.org/packages/egeloen/ordered-form)
 [![Total Downloads](https://poser.pugx.org/egeloen/ordered-form/downloads.svg)](https://packagist.org/packages/egeloen/ordered-form)

@@ -228,7 +228,7 @@ class FormOrderer implements FormOrdererInterface
         $name = $form->getName();
 
         $this->detectCircularDiffered($name, $position);
-        $this->detectedSymetricDiffered($name, $differed, $position);
+        $this->detectedSymmetricDiffered($name, $differed, $position);
     }
 
     /**
@@ -260,7 +260,7 @@ class FormOrderer implements FormOrdererInterface
     }
 
     /**
-     * Detects symetric before/after differed.
+     * Detects symmetric before/after differed.
      *
      * @param string $name     The form name.
      * @param string $differed The differed form name.
@@ -268,7 +268,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws \Ivory\OrderedForm\Exception\OrderedConfigurationException If there is a symetric before/after differed.
      */
-    protected function detectedSymetricDiffered($name, $differed, $position)
+    protected function detectedSymmetricDiffered($name, $differed, $position)
     {
         $reversePosition = ($position === 'before') ? 'after' : 'before';
 

@@ -2,6 +2,7 @@
 
 ### 1.1.0 (????-??-??)
 
+ * 4a9051b - [Orderer] Rename detectedSymetricDiffered to detectedSymmetricDiffered
  * 01f7562 - [Orderer] Remove form stored in the form orderer
  * 723d36f - [Orderer] Remove form orderer factory
  * a25cda7 - [README] Add versioneye badge

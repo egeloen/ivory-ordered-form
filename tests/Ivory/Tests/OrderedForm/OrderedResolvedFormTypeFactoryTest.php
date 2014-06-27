@@ -24,15 +24,15 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
     protected $resolvedFactory;
 
     /** @var \Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface */
-    protected $ordererFactory;
+    protected $orderer;
 
     /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
-        $this->ordererFactory = $this->getMock('Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface');
-        $this->resolvedFactory = new OrderedResolvedFormTypeFactory($this->ordererFactory);
+        $this->orderer = $this->getMock('Ivory\OrderedForm\Orderer\FormOrdererInterface');
+        $this->resolvedFactory = new OrderedResolvedFormTypeFactory($this->orderer);
     }
 
     /**
@@ -40,23 +40,35 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        unset($this->ordererFactory);
+        unset($this->orderer);
         unset($this->resolvedFactory);
     }
 
-    public function testCreate()
+    public function testCreateWithOrderer()
     {
-        $this->ordererFactory
-            ->expects($this->once())
-            ->method('create')
-            ->will($this->returnValue($this->getMock('Ivory\OrderedForm\Orderer\FormOrdererInterface')));
+        $this->assertInstanceOf(
+            'Ivory\OrderedForm\OrderedResolvedFormType',
+            $this->resolvedFactory->createResolvedType($this->createFormType(), array())
+        );
+    }
+
+    public function testCreateWithoutOrderer()
+    {
+        $this->resolvedFactory = new OrderedResolvedFormTypeFactory();
 
         $this->assertInstanceOf(
             'Ivory\OrderedForm\OrderedResolvedFormType',
-            $this->resolvedFactory->createResolvedType(
-                $this->getMock('Symfony\Component\Form\FormTypeInterface'),
-                array()
-            )
+            $this->resolvedFactory->createResolvedType($this->createFormType(), array())
         );
+    }
+
+    /**
+     * Creates a form type.
+     *
+     * @return \Symfony\Component\Form\FormTypeInterface The form type.
+     */
+    protected function createFormType()
+    {
+        return $this->getMock('Symfony\Component\Form\FormTypeInterface');
     }
 }

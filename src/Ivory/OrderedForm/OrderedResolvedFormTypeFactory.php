@@ -11,7 +11,8 @@
 
 namespace Ivory\OrderedForm;
 
-use Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface;
+use Ivory\OrderedForm\Orderer\FormOrderer;
+use Ivory\OrderedForm\Orderer\FormOrdererInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\ResolvedFormTypeFactory;
 use Symfony\Component\Form\ResolvedFormTypeInterface;
@@ -23,17 +24,17 @@ use Symfony\Component\Form\ResolvedFormTypeInterface;
  */
 class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
 {
-    /** @var \Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface */
-    protected $ordererFactory;
+    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
+    protected $orderer;
 
     /**
      * Creates an orderer resolved form type factory.
      *
-     * @param \Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface $ordererFactory The form orderer factory.
+     * @param \Ivory\OrderedForm\Orderer\FormOrdererInterface|null $orderer The form orderer.
      */
-    public function __construct(FormOrdererFactoryInterface $ordererFactory)
+    public function __construct(FormOrdererInterface $orderer = null)
     {
-        $this->ordererFactory = $ordererFactory;
+        $this->orderer = $orderer ?: new FormOrderer();
     }
 
     /**
@@ -44,6 +45,6 @@ class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
         array $typeExtensions,
         ResolvedFormTypeInterface $parent = null
     ) {
-        return new OrderedResolvedFormType($this->ordererFactory->create(), $type, $typeExtensions, $parent);
+        return new OrderedResolvedFormType($this->orderer, $type, $typeExtensions, $parent);
     }
 }

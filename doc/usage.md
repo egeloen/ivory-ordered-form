@@ -5,18 +5,17 @@ Before starting, if you're not already familiar with the Symfony2 form component
 
 ## Set up
 
+### Default orderer
+
 To make the library working, you need to set up the Symfony2 form component the right way:
 
 ``` php
 use Symfony\Component\Form\Forms;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
-use Ivory\OrderedForm\Orderer\FormOrdererFactory;
 use Ivory\OrderedForm\Extension\OrderedExtension;
 
 $formFactory = Forms::createFormFactory()
-    ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(
-        new FormOrdererFactory()
-    ))
+    ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
     ->addExtension(new OrderedExtension());
 
 $form = $formFactory->createBuilder()
@@ -26,6 +25,33 @@ $form = $formFactory->createBuilder()
 
 // The view are ordered!
 $view = $form->createView();
+```
+
+### Custom orderer
+
+The library has been designed around the `Ivory\OrderedForm\Orderer\FormOrdererInterface` which have for responsibility
+to order a form. This interface wraps a single method called `order` which takes a form interface as argument and
+returns the ordered children form names.
+
+``` php
+use Ivory\OrderedForm\Orderer\FormOrdererInterface;
+use Symfony\Component\Form\FormInterface;
+
+CustomFormOrderer implements FormOrdererInterface
+{
+    public function order(FormInterface $form)
+    {
+        // your own logic which returns ordered form children names.
+    }
+}
+```
+
+Then, just need to register your custom form orderer:
+
+``` php
+$formFactory = Forms::createFormFactory()
+    ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(new CustomFormOrderer()))
+    ->addExtension(new OrderedExtension());
 ```
 
 ## Position

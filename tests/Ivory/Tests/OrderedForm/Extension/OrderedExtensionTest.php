@@ -13,7 +13,6 @@ namespace Ivory\Tests\OrderedForm\Extension;
 
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
-use Ivory\OrderedForm\Orderer\FormOrdererFactory;
 use Symfony\Component\Form\Forms;
 
 /**
@@ -32,7 +31,7 @@ class OrderedExtensionTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->builder = Forms::createFormFactoryBuilder()
-            ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(new FormOrdererFactory()))
+            ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
             ->addExtension(new OrderedExtension())
             ->getFormFactory()
             ->createBuilder();

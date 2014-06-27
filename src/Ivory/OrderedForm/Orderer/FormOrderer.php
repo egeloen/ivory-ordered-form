@@ -21,9 +21,6 @@ use Symfony\Component\Form\FormInterface;
  */
 class FormOrderer implements FormOrdererInterface
 {
-    /** @var \Symfony\Component\Form\FormInterface */
-    protected $form;
-
     /** @var array */
     protected $weights;
 
@@ -44,9 +41,9 @@ class FormOrderer implements FormOrdererInterface
      */
     public function order(FormInterface $form)
     {
-        $this->reset($form);
+        $this->reset();
 
-        foreach ($this->form as $child) {
+        foreach ($form as $child) {
             $position = $child->getConfig()->getPosition();
 
             if (empty($position)) {
@@ -222,7 +219,7 @@ class FormOrderer implements FormOrdererInterface
      */
     protected function processDiffered(FormInterface $form, $differed, $position)
     {
-        if (!$this->form->has($differed)) {
+        if (!$form->getParent()->has($differed)) {
             throw OrderedConfigurationException::createInvalidDiffered($form->getName(), $position, $differed);
         }
 
@@ -286,13 +283,9 @@ class FormOrderer implements FormOrdererInterface
 
     /**
      * Resets the orderer.
-     *
-     * @param \Symfony\Component\Form\FormInterface $form The form.
      */
-    protected function reset(FormInterface $form)
+    protected function reset()
     {
-        $this->form = $form;
-
         $this->weights = array();
         $this->differed = array(
             'before' => array(),

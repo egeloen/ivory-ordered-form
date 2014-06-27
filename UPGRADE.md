@@ -11,3 +11,7 @@ In order to only share a single instance of the form orderer, the
 `Ivory\OrderedForm\Orderer\FormOrdererInterface`. Accordingly, the
 `Ivory\OrderedForm\ResolvedFormTypeFactory::__construct` has been updated to take an optional
 `Ivory\OrderedForm\Orderer\FormOrdererInterface`.
+
+The `Ivory\OrderedForm\Orderer\FormOrderer::$form` has been removed as it is not needed in order to order form children
+and will simplify the PHP garbage collection. Accordingly, the `Ivory\OrderedForm\Orderer\FormOrderer::reset` argument
+has been removed.

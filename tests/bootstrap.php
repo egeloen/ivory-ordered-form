@@ -13,4 +13,4 @@
 $loader = require __DIR__.'/../vendor/autoload.php';
 
 // Autoloads tests.
-$loader->add('Ivory\\Tests', __DIR__);
+$loader->add('Ivory\\Tests\\OrderedForm', __DIR__);

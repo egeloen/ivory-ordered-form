@@ -14,9 +14,10 @@ use Symfony\Component\Form\Forms;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Extension\OrderedExtension;
 
-$formFactory = Forms::createFormFactory()
+$formFactory = Forms::createFormFactoryBuilder()
     ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
-    ->addExtension(new OrderedExtension());
+    ->addExtension(new OrderedExtension())
+    ->getFormFactory();
 
 $form = $formFactory->createBuilder()
     ->add('dueDate', 'date')
@@ -49,9 +50,10 @@ CustomFormOrderer implements FormOrdererInterface
 Then, just need to register your custom form orderer:
 
 ``` php
-$formFactory = Forms::createFormFactory()
+$formFactory = Forms::createFormFactoryBuilder()
     ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory(new CustomFormOrderer()))
-    ->addExtension(new OrderedExtension());
+    ->addExtension(new OrderedExtension())
+    ->getFormFactory();
 ```
 
 ## Position

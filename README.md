@@ -15,9 +15,14 @@ last or an associative array describing before and/or after field.
 
 ## Documentation
 
- 1. [Installation](http://github.com/egeloen/ivory-ordered-form/blob/master/doc/installation.md)
- 2. [Usage](http://github.com/egeloen/ivory-ordered-form/blob/master/doc/usage.md)
- 3. [Known limitations](http://github.com/egeloen/ivory-ordered-form/blob/master/doc/known_limitations.md)
+ 1. [Installation](/doc/installation.md)
+ 2. [Usage](/doc/usage.md)
+ 3. [Known limitations](/doc/known_limitations.md)
+
+## Testing
+
+The library is fully unit tested by [PHPUnit](http://www.phpunit.de/) with a code coverage close to **100%**. To
+execute the test suite, check the travis [configuration](/.travis.yml).
 
 ## Contribute
 
@@ -26,5 +31,4 @@ We love contributors! Ivory is an open source project. If you'd like to contribu
 ## License
 
 The Ivory Ordered Form is under the MIT license. For the full copyright and license information, please read the
-[LICENSE](https://github.com/egeloen/IvoryOrderedFormBundle/blob/master/LICENSE) file that was distributed with this
-source code.
+[LICENSE](/LICENSE) file that was distributed with this source code.

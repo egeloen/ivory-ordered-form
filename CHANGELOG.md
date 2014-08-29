@@ -2,6 +2,7 @@
 
 ### 1.1.1 (????-??-??)
 
+ * d505420 - Migrate to PSR-4
  * a8be876 - [README] Rely on relative link
  * 69c0bcc - Add contributing doc
 

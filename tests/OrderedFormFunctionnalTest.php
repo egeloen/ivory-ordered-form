@@ -25,10 +25,10 @@ use Symfony\Component\Form\FormView;
 class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Symfony\Component\Form\FormFactoryBuilderInterface */
-    protected $factoryBuilder;
+    private $factoryBuilder;
 
     /** @var \Symfony\Component\Form\FormFactoryInterface */
-    protected $factory;
+    private $factory;
 
     /**
      * {@inheritdoc}
@@ -369,7 +369,7 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Symfony\Component\Form\FormInterface The form.
      */
-    protected function createForm(array $config)
+    private function createForm(array $config)
     {
         $builder = $this->factory->createBuilder();
 
@@ -390,7 +390,7 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
      * @param \Symfony\Component\Form\FormView $view     The form view.
      * @param array                            $expected The expected positions.
      */
-    protected function assertPositions(FormView $view, array $expected)
+    private function assertPositions(FormView $view, array $expected)
     {
         $children = array_values($view->children);
 

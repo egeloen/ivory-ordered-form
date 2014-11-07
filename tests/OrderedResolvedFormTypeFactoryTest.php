@@ -21,10 +21,10 @@ use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Ivory\OrderedForm\OrderedResolvedFormTypeFactory */
-    protected $resolvedFactory;
+    private $resolvedFactory;
 
     /** @var \Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface */
-    protected $orderer;
+    private $orderer;
 
     /**
      * {@inheritdoc}
@@ -67,7 +67,7 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Symfony\Component\Form\FormTypeInterface The form type.
      */
-    protected function createFormType()
+    private function createFormType()
     {
         return $this->getMock('Symfony\Component\Form\FormTypeInterface');
     }

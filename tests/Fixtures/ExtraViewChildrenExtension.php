@@ -23,7 +23,7 @@ use Symfony\Component\Form\FormView;
 class ExtraViewChildrenExtension extends AbstractTypeExtension
 {
     /** @var array */
-    protected $names;
+    private $names;
 
     /**
      * Creates an extra view children extension.

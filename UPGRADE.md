@@ -1,5 +1,10 @@
 # UPGRADE
 
+### 1.1 to 2.0
+
+ * All protected properties and methods have been updated to private except for entry points. This is mostly motivated
+   for enforcing the encapsulation and easing backward compatibility.
+
 ### 1.0 to 1.1
 
 The `Ivory\OrderedForm\Orderer\FormOrdererFactory` and `Ivory\OrderedForm\Orderer\FormFactory` has been removed as it
@@ -16,5 +21,5 @@ The `Ivory\OrderedForm\Orderer\FormOrderer::$form` has been removed as it is not
 and will simplify the PHP garbage collection. Accordingly, the `Ivory\OrderedForm\Orderer\FormOrderer::reset` argument
 has been removed.
 
-The `Ivory\OrderedForm\Orderer\FormOrderer::detectedSymetricDiffered` has been renamed to 
+The `Ivory\OrderedForm\Orderer\FormOrderer::detectedSymetricDiffered` has been renamed to
 `Ivory\OrderedForm\Orderer\FormOrderer::detectedSymmetricDiffered`.

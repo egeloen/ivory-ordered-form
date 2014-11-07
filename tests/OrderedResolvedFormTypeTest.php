@@ -22,13 +22,13 @@ use Ivory\OrderedForm\OrderedResolvedFormType;
 class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Symfony\Component\EventDispatcher\EventDispatcher */
-    protected $dispatcher;
+    private $dispatcher;
 
     /** @var \Symfony\Component\Form\FormFactoryInterface */
-    protected $factory;
+    private $factory;
 
     /** @var \Ivory\OrderedForm\OrderedResolvedFormType */
-    protected $type;
+    private $type;
 
     /**
      * {@inheritdoc}
@@ -113,7 +113,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Symfony\Component\Form\FormTypeInterface The form type mock.
      */
-    protected function createMockFormType()
+    private function createMockFormType()
     {
         return $this->getMock('Symfony\Component\Form\FormTypeInterface');
     }
@@ -123,7 +123,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Symfony\Component\Form\FormFactoryInterface The form factory mock.
      */
-    protected function createMockFormFactory()
+    private function createMockFormFactory()
     {
         return $this->getMock('Symfony\Component\Form\FormFactoryInterface');
     }

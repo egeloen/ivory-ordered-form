@@ -25,7 +25,7 @@ use Symfony\Component\Form\ResolvedFormTypeInterface;
 class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
 {
     /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
-    protected $orderer;
+    private $orderer;
 
     /**
      * Creates an orderer resolved form type factory.

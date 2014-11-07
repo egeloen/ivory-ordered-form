@@ -24,7 +24,7 @@ use Symfony\Component\Form\Exception\BadMethodCallException;
 class OrderedButtonBuilder extends ButtonBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
     /** @var null|string|array */
-    protected $position;
+    private $position;
 
     /**
      * {@inheritdoc}

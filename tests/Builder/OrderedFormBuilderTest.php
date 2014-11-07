@@ -23,9 +23,9 @@ class OrderedFormBuilderTest extends AbstractOrderedBuilderTest
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function createOrderedBuilder()
     {
-        $this->builder = new OrderedFormBuilder(
+        return new OrderedFormBuilder(
             'foo',
             null,
             $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface'),

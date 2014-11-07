@@ -23,8 +23,8 @@ class OrderedSubmitButtonBuilderTest extends AbstractOrderedBuilderTest
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function createOrderedBuilder()
     {
-        $this->builder = new OrderedSubmitButtonBuilder('foo', array());
+        return new OrderedSubmitButtonBuilder('foo', array());
     }
 }

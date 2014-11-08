@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 1.1.1 (????-??-??)
+### 1.1.1 (2014-11-08)
 
  * a31f4c5 - [Gitignore] Remove Composer installer and phar
  * d505420 - Migrate to PSR-4

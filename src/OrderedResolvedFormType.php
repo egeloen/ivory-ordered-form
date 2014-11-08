@@ -33,7 +33,7 @@ use Symfony\Component\Form\SubmitButtonTypeInterface;
 class OrderedResolvedFormType extends ResolvedFormType
 {
     /** @var \Ivory\OrderedForm\Model\FormOrdererInterface */
-    protected $orderer;
+    private $orderer;
 
     /**
      * {@inheritdoc}

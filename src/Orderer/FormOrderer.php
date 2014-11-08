@@ -22,19 +22,19 @@ use Symfony\Component\Form\FormInterface;
 class FormOrderer implements FormOrdererInterface
 {
     /** @var array */
-    protected $weights;
+    private $weights;
 
     /** @var array */
-    protected $differed;
+    private $differed;
 
     /** @var integer */
-    protected $firstWeight;
+    private $firstWeight;
 
     /** @var integer */
-    protected $currentWeight;
+    private $currentWeight;
 
     /** @var integer */
-    protected $lastWeight;
+    private $lastWeight;
 
     /**
      * {@inheritdoc}
@@ -65,7 +65,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @param \Symfony\Component\Form\FormInterface $form The form.
      */
-    protected function processEmptyPosition(FormInterface $form)
+    private function processEmptyPosition(FormInterface $form)
     {
         $this->processWeight($form, $this->currentWeight);
     }
@@ -76,7 +76,7 @@ class FormOrderer implements FormOrdererInterface
      * @param \Symfony\Component\Form\FormInterface $form     The form.
      * @param string                                $position The position.
      */
-    protected function processStringPosition(FormInterface $form, $position)
+    private function processStringPosition(FormInterface $form, $position)
     {
         if ($position === 'first') {
             $this->processFirst($form);
@@ -91,7 +91,7 @@ class FormOrderer implements FormOrdererInterface
      * @param \Symfony\Component\Form\FormInterface $form     The form.
      * @param array                                 $position The position.
      */
-    protected function processArrayPosition(FormInterface $form, array $position)
+    private function processArrayPosition(FormInterface $form, array $position)
     {
         if (isset($position['before'])) {
             $this->processBefore($form, $position['before']);
@@ -107,7 +107,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @param \Symfony\Component\Form\FormInterface $form The form.
      */
-    protected function processFirst(FormInterface $form)
+    private function processFirst(FormInterface $form)
     {
         $this->processWeight($form, $this->firstWeight++);
     }
@@ -117,7 +117,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @param \Symfony\Component\Form\FormInterface $form The form.
      */
-    protected function processLast(FormInterface $form)
+    private function processLast(FormInterface $form)
     {
         $this->processWeight($form, $this->lastWeight + 1);
     }
@@ -128,7 +128,7 @@ class FormOrderer implements FormOrdererInterface
      * @param \Symfony\Component\Form\FormInterface $form   The form.
      * @param string                                $before The before form name.
      */
-    protected function processBefore(FormInterface $form, $before)
+    private function processBefore(FormInterface $form, $before)
     {
         if (!isset($this->weights[$before])) {
             $this->processDiffered($form, $before, 'before');
@@ -143,7 +143,7 @@ class FormOrderer implements FormOrdererInterface
      * @param \Symfony\Component\Form\FormInterface $form  The form.
      * @param string                                $after The after form name.
      */
-    protected function processAfter(FormInterface $form, $after)
+    private function processAfter(FormInterface $form, $after)
     {
         if (!isset($this->weights[$after])) {
             $this->processDiffered($form, $after, 'after');
@@ -158,7 +158,7 @@ class FormOrderer implements FormOrdererInterface
      * @param \Symfony\Component\Form\FormInterface $form   The form.
      * @param integer                               $weight The weight.
      */
-    protected function processWeight(FormInterface $form, $weight)
+    private function processWeight(FormInterface $form, $weight)
     {
         foreach ($this->weights as &$weightRef) {
             if ($weightRef >= $weight) {
@@ -185,7 +185,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @return integer The new weight.
      */
-    protected function finishWeight(FormInterface $form, $weight, $position = null)
+    private function finishWeight(FormInterface $form, $weight, $position = null)
     {
         if ($position === null) {
             foreach (array_keys($this->differed) as $position) {
@@ -217,7 +217,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws \Ivory\OrderedForm\Exception\OrderedConfigurationException If the differed form does not exist.
      */
-    protected function processDiffered(FormInterface $form, $differed, $position)
+    private function processDiffered(FormInterface $form, $differed, $position)
     {
         if (!$form->getParent()->has($differed)) {
             throw OrderedConfigurationException::createInvalidDiffered($form->getName(), $position, $differed);
@@ -240,7 +240,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws \Ivory\OrderedForm\Exception\CircularConfigurationException If there is a circular before/after differed.
      */
-    protected function detectCircularDiffered($name, $position, array $stack = array())
+    private function detectCircularDiffered($name, $position, array $stack = array())
     {
         if (!isset($this->differed[$position][$name])) {
             return;
@@ -268,7 +268,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws \Ivory\OrderedForm\Exception\OrderedConfigurationException If there is a symetric before/after differed.
      */
-    protected function detectedSymmetricDiffered($name, $differed, $position)
+    private function detectedSymmetricDiffered($name, $differed, $position)
     {
         $reversePosition = ($position === 'before') ? 'after' : 'before';
 
@@ -284,7 +284,7 @@ class FormOrderer implements FormOrdererInterface
     /**
      * Resets the orderer.
      */
-    protected function reset()
+    private function reset()
     {
         $this->weights = array();
         $this->differed = array(

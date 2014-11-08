@@ -19,14 +19,14 @@ namespace Ivory\Tests\OrderedForm\Builder;
 abstract class AbstractOrderedBuilderTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface */
-    protected $builder;
+    private $builder;
 
     /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
-        $this->markTestSkipped('You must override the setUp method in order to instanciate your builder.');
+        $this->builder = $this->createOrderedBuilder();
     }
 
     /**
@@ -36,6 +36,13 @@ abstract class AbstractOrderedBuilderTest extends \PHPUnit_Framework_TestCase
     {
         unset($this->builder);
     }
+
+    /**
+     * Creates an ordered builder.
+     *
+     * @return \Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface The ordered builder.
+     */
+    abstract protected function createOrderedBuilder();
 
     public function testDefaultState()
     {

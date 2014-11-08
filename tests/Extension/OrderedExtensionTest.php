@@ -23,7 +23,7 @@ use Symfony\Component\Form\Forms;
 class OrderedExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /** @var \Ivory\OrderedForm\Builder\OrderedFormBuilder */
-    protected $builder;
+    private $builder;
 
     /**
      * {@inheritdoc}

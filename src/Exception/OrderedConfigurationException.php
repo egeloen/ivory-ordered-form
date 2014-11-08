@@ -28,7 +28,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "CIRCULAR DIFFERED" exception.
      */
-    static public function createCircularDiffered(array $stack, $position)
+    public static function createCircularDiffered(array $stack, $position)
     {
         $stack[] = $stack[0];
 
@@ -48,7 +48,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID DIFFERED" exception.
      */
-    static public function createInvalidDiffered($name, $position, $differed)
+    public static function createInvalidDiffered($name, $position, $differed)
     {
         $decoratedDiffered = self::decorateValue($differed);
 
@@ -70,7 +70,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID STRING POSITION" exception.
      */
-    static public function createInvalidStringPosition($name, $position)
+    public static function createInvalidStringPosition($name, $position)
     {
         return new self(sprintf(
             'The %s form uses position as string which can only be "first" or "last" (current: %s).',
@@ -87,7 +87,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID ARRAY CONFIGURATION" exception.
      */
-    static public function createInvalidArrayPosition($name, array $position)
+    public static function createInvalidArrayPosition($name, array $position)
     {
         return new self(sprintf(
             'The %s form uses position as array or you must define the "before" or "after" option (current: %s).',
@@ -104,7 +104,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "SYMETRIC DIFFERED" exception.
      */
-    static public function createSymetricDiffered($name, $symetric)
+    public static function createSymetricDiffered($name, $symetric)
     {
         return new self(sprintf(
             'The form ordering does not support symetrical before/after option (%s <=> %s).',
@@ -121,7 +121,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return array The decorated values.
      */
-    static protected function decorateValues(array $values, $decorator = '"')
+    private static function decorateValues(array $values, $decorator = '"')
     {
         $result = array();
 
@@ -140,7 +140,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      *
      * @return string The decorated value.
      */
-    static protected function decorateValue($value, $decorator = '"')
+    private static function decorateValue($value, $decorator = '"')
     {
         return $decorator.$value.$decorator;
     }

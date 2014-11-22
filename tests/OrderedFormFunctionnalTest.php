@@ -358,7 +358,7 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
                     'bar' => array('after' => 'foo'),
                 ),
                 'The form ordering does not support symetrical before/after option ("bar" <=> "foo").',
-            )
+            ),
         );
     }
 

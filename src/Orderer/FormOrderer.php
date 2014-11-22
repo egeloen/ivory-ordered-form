@@ -48,7 +48,7 @@ class FormOrderer implements FormOrdererInterface
 
             if (empty($position)) {
                 $this->processEmptyPosition($child);
-            } else if (is_string($position)) {
+            } elseif (is_string($position)) {
                 $this->processStringPosition($child, $position);
             } else {
                 $this->processArrayPosition($child, $position);
@@ -274,7 +274,7 @@ class FormOrderer implements FormOrdererInterface
 
         if (isset($this->differed[$reversePosition][$name])) {
             foreach ($this->differed[$reversePosition][$name] as $diff) {
-               if ($diff->getName() === $differed) {
+                if ($diff->getName() === $differed) {
                     throw OrderedConfigurationException::createSymetricDiffered($name, $differed);
                 }
             }

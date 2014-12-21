@@ -2,6 +2,7 @@
 
 ### 2.0.0 (????-??-??)
 
+ * 32d155e - [Travis] Add composer prefer lowest build
  * a1d0446 - [Travis] Move Symfony 2.6.*@dev to 2.6.*
  * dcdefd3 - [Travis] Update config
  * 3f2dc88 - Add .gitattributes

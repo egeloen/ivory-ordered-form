@@ -37,6 +37,6 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     {
         $resolver
             ->setDefaults(array('position' => null))
-            ->setAllowedTypes(array('position' => array('null', 'string', 'array')));
+            ->setAllowedTypes('position' => array('null', 'string', 'array'));
     }
 }

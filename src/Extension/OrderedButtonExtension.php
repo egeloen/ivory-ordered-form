@@ -24,6 +24,6 @@ class OrderedButtonExtension extends AbstractOrderedExtension
     */
     public function getExtendedType()
     {
-        return 'button';
+        return 'Symfony\Component\Form\Extension\Core\Type\ButtonType';
     }
 }

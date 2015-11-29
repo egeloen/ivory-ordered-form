@@ -36,6 +36,7 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
+            ->setDefined(array('position'))
             ->setDefaults(array('position' => null))
             ->setAllowedTypes('position', array('null', 'string', 'array'));
     }

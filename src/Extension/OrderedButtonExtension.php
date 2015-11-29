@@ -10,7 +10,6 @@
  */
 
 namespace Ivory\OrderedForm\Extension;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 /**
  * Ordered form button extension.
@@ -25,6 +24,6 @@ class OrderedButtonExtension extends AbstractOrderedExtension
     */
     public function getExtendedType()
     {
-        return ButtonType::class;
+        return 'Symfony\Component\Form\Extension\Core\Type\ButtonType';
     }
 }

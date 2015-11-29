@@ -10,6 +10,7 @@
  */
 
 namespace Ivory\OrderedForm\Extension;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 /**
  * Ordered form extension.
@@ -23,6 +24,6 @@ class OrderedFormExtension extends AbstractOrderedExtension
      */
     public function getExtendedType()
     {
-        return 'form';
+        return FormType::class;
     }
 }

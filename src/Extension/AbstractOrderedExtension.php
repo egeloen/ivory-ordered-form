@@ -13,6 +13,7 @@ namespace Ivory\OrderedForm\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -33,10 +34,10 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setDefaults(array('position' => null))
-            ->setAllowedTypes(array('position' => array('null', 'string', 'array')));
+            ->setAllowedTypes('position', array('null', 'string', 'array'));
     }
 }

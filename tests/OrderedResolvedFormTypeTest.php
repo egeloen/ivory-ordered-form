@@ -59,7 +59,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateBuilderWithButtonInnerType()
     {
-        $innerType = $this->getMock('Symfony\Component\Form\ButtonTypeInterface');
+        $innerType = $this->getMock('Symfony\Component\Form\Extension\Core\Type\ButtonType');
 
         $this->type = new OrderedResolvedFormType(
             new FormOrderer(),
@@ -76,7 +76,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateBuilderWithSubmitButtonInnerType()
     {
-        $innerType = $this->getMock('Symfony\Component\Form\SubmitButtonTypeInterface');
+        $innerType = $this->getMock('Symfony\Component\Form\Extension\Core\Type\SubmitType');
 
         $this->type = new OrderedResolvedFormType(
             new FormOrderer(),
@@ -111,11 +111,11 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Creates a form type mock.
      *
-     * @return \Symfony\Component\Form\FormTypeInterface The form type mock.
+     * @return \Symfony\Component\Form\AbstractType The form type mock.
      */
     private function createMockFormType()
     {
-        return $this->getMock('Symfony\Component\Form\FormTypeInterface');
+        return $this->getMock('Symfony\Component\Form\AbstractType');
     }
 
     /**

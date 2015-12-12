@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 2.0.1 (????-??-??)
+### 2.0.1 (2015-12-12)
 
  * 41429bd - [ResolvedFormType] Detect children view dynamically removed
  * 8486a50 - Make base code compatible with Symfony3

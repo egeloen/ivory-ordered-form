@@ -13,7 +13,8 @@ namespace Ivory\Tests\OrderedForm;
 
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
-use Ivory\Tests\OrderedForm\Fixtures\ExtraViewChildrenExtension;
+use Ivory\Tests\OrderedForm\Fixtures\ExtraChildrenViewExtension;
+use Ivory\Tests\OrderedForm\Fixtures\RemoveChildrenViewExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\FormView;
 
@@ -74,14 +75,14 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
         $this->createForm($config)->createView();
     }
 
-    public function testExtraViewChild()
+    public function testExtraChildrenView()
     {
         $type = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
             ? 'Symfony\Component\Form\Extension\Core\Type\FormType'
             : 'form';
 
         $view = $this->factoryBuilder
-            ->addTypeExtension(new ExtraViewChildrenExtension(array('extra1', 'extra2')))
+            ->addTypeExtension(new ExtraChildrenViewExtension(array('extra1', 'extra2')))
             ->getFormFactory()
             ->createBuilder()
             ->add('foo', $type, array('position' => 'last'))
@@ -90,6 +91,24 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
             ->createView();
 
         $this->assertPositions($view, array('bar', 'foo', 'extra1', 'extra2'));
+    }
+
+    public function testRemoveChildrenView()
+    {
+        $type = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
+            ? 'Symfony\Component\Form\Extension\Core\Type\FormType'
+            : 'form';
+
+        $view = $this->factoryBuilder
+            ->addTypeExtension(new RemoveChildrenViewExtension(array('foo')))
+            ->getFormFactory()
+            ->createBuilder()
+            ->add('foo', $type, array('position' => 'last'))
+            ->add('bar', $type, array('position' => 'first'))
+            ->getForm()
+            ->createView();
+
+        $this->assertPositions($view, array('bar'));
     }
 
     /**

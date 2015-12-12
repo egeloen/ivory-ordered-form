@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormView;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class ExtraViewChildrenExtension extends AbstractTypeExtension
+class RemoveChildrenViewExtension extends AbstractTypeExtension
 {
     /** @var array */
     private $names;
@@ -40,8 +40,12 @@ class ExtraViewChildrenExtension extends AbstractTypeExtension
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
+        if ($form->isRoot()) {
+            return;
+        }
+
         foreach ($this->names as $name) {
-            $view->children[$name] = new FormView($view);
+            unset($view[$name]);
         }
     }
 

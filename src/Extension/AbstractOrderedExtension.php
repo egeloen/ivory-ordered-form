@@ -38,7 +38,7 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults(array('position' => null));
 
-        if (method_exists('Symfony\Component\Form\AbstractType', 'configureOptions')) {
+        if (method_exists('Symfony\Component\OptionsResolver\OptionsResolver', 'setDefault')) {
             $resolver->setAllowedTypes('position', array('null', 'string', 'array'));
         } else {
             $resolver->setAllowedTypes(array('position' => array('null', 'string', 'array')));

@@ -65,10 +65,10 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Creates a form type.
      *
-     * @return \Symfony\Component\Form\FormTypeInterface The form type.
+     * @return \Symfony\Component\Form\AbstractType The form type.
      */
     private function createFormType()
     {
-        return $this->getMock('Symfony\Component\Form\FormTypeInterface');
+        return $this->getMock('Symfony\Component\Form\AbstractType');
     }
 }

@@ -76,12 +76,16 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
 
     public function testExtraViewChild()
     {
+        $type = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
+            ? 'Symfony\Component\Form\Extension\Core\Type\FormType'
+            : 'form';
+
         $view = $this->factoryBuilder
             ->addTypeExtension(new ExtraViewChildrenExtension(array('extra1', 'extra2')))
             ->getFormFactory()
             ->createBuilder()
-            ->add('foo', 'form', array('position' => 'last'))
-            ->add('bar', 'form', array('position' => 'first'))
+            ->add('foo', $type, array('position' => 'last'))
+            ->add('bar', $type, array('position' => 'first'))
             ->getForm()
             ->createView();
 
@@ -372,12 +376,15 @@ class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
     private function createForm(array $config)
     {
         $builder = $this->factory->createBuilder();
+        $type = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
+            ? 'Symfony\Component\Form\Extension\Core\Type\FormType'
+            : 'form';
 
         foreach ($config as $name => $value) {
             if ((is_string($value) && is_string($name)) || is_array($value)) {
-                $builder->add($name, 'form', array('position' => $value));
+                $builder->add($name, $type, array('position' => $value));
             } else {
-                $builder->add($value, 'form');
+                $builder->add($value, $type);
             }
         }
 

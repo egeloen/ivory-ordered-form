@@ -52,9 +52,11 @@ class OrderedExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function formTypeProvider()
     {
+        $fqcn = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix');
+
         return array(
-            array('text'),
-            array('button'),
+            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\TextType' : 'text'),
+            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\ButtonType' : 'button'),
         );
     }
 

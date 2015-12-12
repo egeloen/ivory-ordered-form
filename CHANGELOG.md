@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 2.0.1 (????-??-??)
+
+ * 41429bd - [ResolvedFormType] Detect children view dynamically removed
+ * 8486a50 - Make base code compatible with Symfony3
+ 
 ### 2.0.0 (2014-12-29)
 
  * 32d155e - [Travis] Add composer prefer lowest build

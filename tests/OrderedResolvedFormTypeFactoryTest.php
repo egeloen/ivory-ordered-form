@@ -18,12 +18,12 @@ use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
+class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
 {
     /** @var \Ivory\OrderedForm\OrderedResolvedFormTypeFactory */
     private $resolvedFactory;
 
-    /** @var \Ivory\OrderedForm\Orderer\FormOrdererFactoryInterface */
+    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
     private $orderer;
 
     /**
@@ -31,7 +31,7 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->orderer = $this->getMock('Ivory\OrderedForm\Orderer\FormOrdererInterface');
+        $this->orderer = $this->createMock('Ivory\OrderedForm\Orderer\FormOrdererInterface');
         $this->resolvedFactory = new OrderedResolvedFormTypeFactory($this->orderer);
     }
 
@@ -69,6 +69,6 @@ class OrderedResolvedFormTypeFactoryTest extends \PHPUnit_Framework_TestCase
      */
     private function createFormType()
     {
-        return $this->getMock('Symfony\Component\Form\AbstractType');
+        return $this->createMock('Symfony\Component\Form\AbstractType');
     }
 }

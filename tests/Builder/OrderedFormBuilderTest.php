@@ -28,8 +28,8 @@ class OrderedFormBuilderTest extends AbstractOrderedBuilderTest
         return new OrderedFormBuilder(
             'foo',
             null,
-            $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface'),
-            $this->getMock('Symfony\Component\Form\FormFactoryInterface')
+            $this->createMock('Symfony\Component\EventDispatcher\EventDispatcherInterface'),
+            $this->createMock('Symfony\Component\Form\FormFactoryInterface')
         );
     }
 }

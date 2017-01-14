@@ -19,7 +19,7 @@ use Ivory\OrderedForm\OrderedResolvedFormType;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
+class OrderedResolvedFormTypeTest extends AbstractTestCase
 {
     /** @var \Symfony\Component\EventDispatcher\EventDispatcher */
     private $dispatcher;
@@ -35,8 +35,8 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
-        $this->factory = $this->getMock('Symfony\Component\Form\FormFactoryInterface');
+        $this->dispatcher = $this->createMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
+        $this->factory = $this->createMock('Symfony\Component\Form\FormFactoryInterface');
 
         $this->type = new OrderedResolvedFormType(
             new FormOrderer(),
@@ -59,7 +59,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateBuilderWithButtonInnerType()
     {
-        $innerType = $this->getMock('Symfony\Component\Form\Extension\Core\Type\ButtonType');
+        $innerType = $this->createMock('Symfony\Component\Form\Extension\Core\Type\ButtonType');
 
         $this->type = new OrderedResolvedFormType(
             new FormOrderer(),
@@ -76,7 +76,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateBuilderWithSubmitButtonInnerType()
     {
-        $innerType = $this->getMock('Symfony\Component\Form\Extension\Core\Type\SubmitType');
+        $innerType = $this->createMock('Symfony\Component\Form\Extension\Core\Type\SubmitType');
 
         $this->type = new OrderedResolvedFormType(
             new FormOrderer(),
@@ -115,7 +115,7 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
      */
     private function createMockFormType()
     {
-        return $this->getMock('Symfony\Component\Form\AbstractType');
+        return $this->createMock('Symfony\Component\Form\AbstractType');
     }
 
     /**
@@ -125,6 +125,6 @@ class OrderedResolvedFormTypeTest extends \PHPUnit_Framework_TestCase
      */
     private function createMockFormFactory()
     {
-        return $this->getMock('Symfony\Component\Form\FormFactoryInterface');
+        return $this->createMock('Symfony\Component\Form\FormFactoryInterface');
     }
 }

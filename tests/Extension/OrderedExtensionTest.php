@@ -13,6 +13,7 @@ namespace Ivory\Tests\OrderedForm\Extension;
 
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
+use Ivory\Tests\OrderedForm\AbstractTestCase;
 use Symfony\Component\Form\Forms;
 
 /**
@@ -20,7 +21,7 @@ use Symfony\Component\Form\Forms;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedExtensionTest extends \PHPUnit_Framework_TestCase
+class OrderedExtensionTest extends AbstractTestCase
 {
     /** @var \Ivory\OrderedForm\Builder\OrderedFormBuilder */
     private $builder;

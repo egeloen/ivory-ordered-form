@@ -11,12 +11,14 @@
 
 namespace Ivory\Tests\OrderedForm\Builder;
 
+use Ivory\Tests\OrderedForm\AbstractTestCase;
+
 /**
  * Abstract ordered builder test.
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-abstract class AbstractOrderedBuilderTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractOrderedBuilderTest extends AbstractTestCase
 {
     /** @var \Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface */
     private $builder;

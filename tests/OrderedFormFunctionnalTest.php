@@ -23,7 +23,7 @@ use Symfony\Component\Form\FormView;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedFormFunctionnalTest extends \PHPUnit_Framework_TestCase
+class OrderedFormFunctionnalTest extends AbstractTestCase
 {
     /** @var \Symfony\Component\Form\FormFactoryBuilderInterface */
     private $factoryBuilder;

@@ -23,9 +23,6 @@
     "autoload-dev": {
         "psr-4": { "Ivory\\Tests\\OrderedForm\\": "tests/" }
     },
-    "config": {
-        "bin-dir": "bin/"
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"

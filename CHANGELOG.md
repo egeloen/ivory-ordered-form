@@ -2,6 +2,7 @@
 
 ### 2.0.1 (2015-12-12)
 
+ * cbe354b - [Travis] Fix the build
  * 9fde17c - [Scrutinizer] Fix code coverage configuration
  * 04923b6 - [Composer] Update deps
  * 9ceee75 - [License] Happy new year

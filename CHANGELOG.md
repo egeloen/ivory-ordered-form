@@ -2,6 +2,9 @@
 
 ### 2.0.1 (2015-12-12)
 
+ * 04923b6 - [Composer] Update deps
+ * 9ceee75 - [License] Happy new year
+ * 483cc0c - Remove coveralls
  * 41429bd - [ResolvedFormType] Detect children view dynamically removed
  * 8486a50 - Make base code compatible with Symfony3
  

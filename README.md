@@ -1,7 +1,7 @@
 # README
 
 [![Build Status](https://secure.travis-ci.org/egeloen/ivory-ordered-form.png?branch=master)](http://travis-ci.org/egeloen/ivory-ordered-form)
-[![Coverage Status](https://coveralls.io/repos/egeloen/ivory-ordered-form/badge.png?branch=master)](https://coveralls.io/r/egeloen/ivory-ordered-form?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/egeloen/ivory-ordered-form/?branch=master)
 [![Dependency Status](https://www.versioneye.com/php/egeloen:ordered-form/badge.svg)](https://www.versioneye.com/php/egeloen:ordered-form)
 

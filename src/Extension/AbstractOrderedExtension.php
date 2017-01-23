@@ -48,7 +48,7 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $this->configureOptions($resolver);
     }

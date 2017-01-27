@@ -14,19 +14,15 @@ namespace Ivory\OrderedForm\Exception;
 use Symfony\Component\Form\Exception\InvalidConfigurationException;
 
 /**
- * Ordered configuration exception.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedConfigurationException extends InvalidConfigurationException
 {
     /**
-     * Creates a "CIRCULAR DIFFERED" exception.
+     * @param array  $stack
+     * @param string $position
      *
-     * @param array  $stack    The circular stack.
-     * @param string $position The position (before|after).
-     *
-     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "CIRCULAR DIFFERED" exception.
+     * @return OrderedConfigurationException
      */
     public static function createCircularDiffered(array $stack, $position)
     {
@@ -40,13 +36,11 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Creates an "INVALID DIFFERED" exception.
+     * @param string $name
+     * @param string $position
+     * @param string $differed
      *
-     * @param string $name     The form name.
-     * @param string $position The position (before|after).
-     * @param string $differed The differed form name.
-     *
-     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID DIFFERED" exception.
+     * @return OrderedConfigurationException
      */
     public static function createInvalidDiffered($name, $position, $differed)
     {
@@ -62,13 +56,10 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Creates an "INVALID STRING POSITION" exception.
+     * @param string $name
+     * @param string $position
      *
-     * @param string $name     The form name.
-     * @param string $position The invalid string position.
-     *
-     *
-     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID STRING POSITION" exception.
+     * @return OrderedConfigurationException
      */
     public static function createInvalidStringPosition($name, $position)
     {
@@ -80,12 +71,10 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Creates an "INVALID ARRAY CONFIGURATION" exception.
+     * @param string $name
+     * @param array  $position
      *
-     * @param string $name     The form name.
-     * @param array  $position The invalid array position.
-     *
-     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "INVALID ARRAY CONFIGURATION" exception.
+     * @return OrderedConfigurationException
      */
     public static function createInvalidArrayPosition($name, array $position)
     {
@@ -97,12 +86,10 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Creates a "SYMETRIC DIFFERED" exception.
+     * @param string $name
+     * @param string $symetric
      *
-     * @param string $name     The form name.
-     * @param string $symetric The symectric form name.
-     *
-     * @return \Ivory\OrderedForm\Exception\OrderedConfigurationException The "SYMETRIC DIFFERED" exception.
+     * @return OrderedConfigurationException
      */
     public static function createSymetricDiffered($name, $symetric)
     {
@@ -114,12 +101,10 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Decorates values with the decorator.
+     * @param array  $values
+     * @param string $decorator
      *
-     * @param array  $values    The values.
-     * @param string $decorator The decorator.
-     *
-     * @return array The decorated values.
+     * @return array
      */
     private static function decorateValues(array $values, $decorator = '"')
     {
@@ -133,12 +118,10 @@ class OrderedConfigurationException extends InvalidConfigurationException
     }
 
     /**
-     * Decorates a value with the decorator.
+     * @param string $value
+     * @param string $decorator
      *
-     * @param string $value     The value.
-     * @param string $decorator The decorator.
-     *
-     * @return string The decorated value.
+     * @return string
      */
     private static function decorateValue($value, $decorator = '"')
     {

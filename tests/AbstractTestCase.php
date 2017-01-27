@@ -12,18 +12,26 @@
 namespace Ivory\Tests\OrderedForm;
 
 /**
- * Abstract test case.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Creates a mock.
+     * @param string $exception
+     */
+    public function expectException($exception)
+    {
+        if (is_callable('parent::expectException')) {
+            return parent::expectException($exception);
+        }
+
+        return $this->setExpectedException($exception);
+    }
+
+    /**
+     * @param string $originalClassName
      *
-     * @param string $originalClassName The original class name.
-     *
-     * @return \PHPUnit_Framework_MockObject_MockObject The mock.
+     * @return \PHPUnit_Framework_MockObject_MockObject
      */
     protected function createMock($originalClassName)
     {

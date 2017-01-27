@@ -13,17 +13,17 @@ namespace Ivory\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Exception\OrderedConfigurationException;
 use Ivory\OrderedForm\OrderedFormConfigInterface;
-use Symfony\Component\Form\SubmitButtonBuilder;
 use Symfony\Component\Form\Exception\BadMethodCallException;
+use Symfony\Component\Form\SubmitButtonBuilder;
 
 /**
- * Ordered submit button builder.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedSubmitButtonBuilder extends SubmitButtonBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
-    /** @var null|string|array */
+    /**
+     * @var string|array|null
+     */
     private $position;
 
     /**

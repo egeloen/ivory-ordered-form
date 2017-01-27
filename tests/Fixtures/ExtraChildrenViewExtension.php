@@ -16,19 +16,17 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
 /**
- * Extra view children extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class ExtraChildrenViewExtension extends AbstractTypeExtension
 {
-    /** @var array */
+    /**
+     * @var array
+     */
     private $names;
 
     /**
-     * Creates an extra view children extension.
-     *
-     * @param array $names The extra view names.
+     * @param array $names
      */
     public function __construct(array $names)
     {

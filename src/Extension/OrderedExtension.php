@@ -14,8 +14,6 @@ namespace Ivory\OrderedForm\Extension;
 use Symfony\Component\Form\AbstractExtension;
 
 /**
- * Ordered extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedExtension extends AbstractExtension

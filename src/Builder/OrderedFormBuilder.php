@@ -13,17 +13,17 @@ namespace Ivory\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Exception\OrderedConfigurationException;
 use Ivory\OrderedForm\OrderedFormConfigInterface;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Exception\BadMethodCallException;
+use Symfony\Component\Form\FormBuilder;
 
 /**
- * Ordered form builder.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedFormBuilder extends FormBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
-    /** @var null|string|array */
+    /**
+     * @var string|array|null
+     */
     private $position;
 
     /**

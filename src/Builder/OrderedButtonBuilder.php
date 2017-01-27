@@ -17,13 +17,13 @@ use Symfony\Component\Form\ButtonBuilder;
 use Symfony\Component\Form\Exception\BadMethodCallException;
 
 /**
- * Ordered button builder.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedButtonBuilder extends ButtonBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
-    /** @var null|string|array */
+    /**
+     * @var string|array|null
+     */
     private $position;
 
     /**

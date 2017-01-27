@@ -15,20 +15,24 @@ use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\Tests\OrderedForm\Fixtures\ExtraChildrenViewExtension;
 use Ivory\Tests\OrderedForm\Fixtures\RemoveChildrenViewExtension;
+use Symfony\Component\Form\FormFactoryBuilderInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\FormView;
 
 /**
- * Ordered form functionnal test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedFormFunctionnalTest extends AbstractTestCase
 {
-    /** @var \Symfony\Component\Form\FormFactoryBuilderInterface */
+    /**
+     * @var FormFactoryBuilderInterface
+     */
     private $factoryBuilder;
 
-    /** @var \Symfony\Component\Form\FormFactoryInterface */
+    /**
+     * @var FormFactoryInterface
+     */
     private $factory;
 
     /**
@@ -44,14 +48,9 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->factory);
-    }
-
-    /**
+     * @param array $config
+     * @param array $expected
+     *
      * @dataProvider getValidPositions
      */
     public function testValidPosition(array $config, array $expected)
@@ -60,6 +59,9 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
+     * @param array       $config
+     * @param string|null $exceptionMessage
+     *
      * @dataProvider getInvalidPositions
      */
     public function testInvalidPosition(array $config, $exceptionMessage = null)
@@ -67,9 +69,9 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
         $exceptionName = 'Ivory\OrderedForm\Exception\OrderedConfigurationException';
 
         if ($exceptionMessage !== null) {
-            $this->setExpectedException($exceptionName, $exceptionMessage);
+            $this->expectException($exceptionName, $exceptionMessage);
         } else {
-            $this->setExpectedException($exceptionName);
+            $this->expectException($exceptionName);
         }
 
         $this->createForm($config)->createView();
@@ -112,9 +114,7 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
-     * Gets the valid positions.
-     *
-     * @return array The valid positions.
+     * @return array
      */
     public function getValidPositions()
     {
@@ -307,7 +307,6 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
                     'ban',
                     'biz' => array('before' => 'nan'),
                     'boz' => array('before' => 'biz', array('after' => 'pop')),
-
                 ),
                 array('foo', 'bar', 'baz', 'bat', 'ban', 'pop', 'boz', 'biz', 'nan'),
             ),
@@ -315,9 +314,7 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
-     * Gets the invalid positions.
-     *
-     * @return array The invalid positions.
+     * @return array
      */
     public function getInvalidPositions()
     {
@@ -386,11 +383,9 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
-     * Creates a form.
+     * @param array $config
      *
-     * @param array $config The form configuration.
-     *
-     * @return \Symfony\Component\Form\FormInterface The form.
+     * @return FormInterface
      */
     private function createForm(array $config)
     {
@@ -411,10 +406,8 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
     }
 
     /**
-     * Asserts the positions.
-     *
-     * @param \Symfony\Component\Form\FormView $view     The form view.
-     * @param array                            $expected The expected positions.
+     * @param FormView $view
+     * @param array    $expected
      */
     private function assertPositions(FormView $view, array $expected)
     {

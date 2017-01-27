@@ -14,18 +14,14 @@ namespace Ivory\OrderedForm\Orderer;
 use Symfony\Component\Form\FormInterface;
 
 /**
- * Form orderer.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 interface FormOrdererInterface
 {
     /**
-     * Orders the form.
+     * @param FormInterface $form
      *
-     * @param \Symfony\Component\Form\FormInterface $form The form.
-     *
-     * @return array The ordered form child names.
+     * @return array
      */
     public function order(FormInterface $form);
 }

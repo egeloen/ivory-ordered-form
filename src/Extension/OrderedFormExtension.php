@@ -12,8 +12,6 @@
 namespace Ivory\OrderedForm\Extension;
 
 /**
- * Ordered form extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedFormExtension extends AbstractOrderedExtension

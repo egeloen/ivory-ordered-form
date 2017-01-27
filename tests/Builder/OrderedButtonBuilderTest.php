@@ -14,8 +14,6 @@ namespace Ivory\Tests\OrderedForm\Builder;
 use Ivory\OrderedForm\Builder\OrderedButtonBuilder;
 
 /**
- * Ordered button builder test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedButtonBuilderTest extends AbstractOrderedBuilderTest

@@ -11,19 +11,20 @@
 
 namespace Ivory\Tests\OrderedForm\Extension;
 
+use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\Tests\OrderedForm\AbstractTestCase;
 use Symfony\Component\Form\Forms;
 
 /**
- * Ordered extension test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedExtensionTest extends AbstractTestCase
 {
-    /** @var \Ivory\OrderedForm\Builder\OrderedFormBuilder */
+    /**
+     * @var OrderedFormBuilder
+     */
     private $builder;
 
     /**
@@ -39,29 +40,8 @@ class OrderedExtensionTest extends AbstractTestCase
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->builder);
-    }
-
-    /**
-     * Form types data provider.
+     * @param string $type
      *
-     * @return array The form types.
-     */
-    public function formTypeProvider()
-    {
-        $fqcn = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix');
-
-        return array(
-            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\TextType' : 'text'),
-            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\ButtonType' : 'button'),
-        );
-    }
-
-    /**
      * @dataProvider formTypeProvider
      */
     public function testEmptyPosition($type)
@@ -72,6 +52,8 @@ class OrderedExtensionTest extends AbstractTestCase
     }
 
     /**
+     * @param string $type
+     *
      * @dataProvider formTypeProvider
      */
     public function testStringPosition($type)
@@ -82,6 +64,8 @@ class OrderedExtensionTest extends AbstractTestCase
     }
 
     /**
+     * @param string $type
+     *
      * @dataProvider formTypeProvider
      */
     public function testArrayPosition($type)
@@ -89,5 +73,18 @@ class OrderedExtensionTest extends AbstractTestCase
         $form = $this->builder->create('foo', $type, array('position' => array('before' => 'bar')))->getForm();
 
         $this->assertSame(array('before' => 'bar'), $form->getConfig()->getPosition());
+    }
+
+    /**
+     * @return array
+     */
+    public function formTypeProvider()
+    {
+        $fqcn = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix');
+
+        return array(
+            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\TextType' : 'text'),
+            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\ButtonType' : 'button'),
+        );
     }
 }

@@ -12,18 +12,21 @@
 namespace Ivory\Tests\OrderedForm;
 
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
+use Ivory\OrderedForm\Orderer\FormOrdererInterface;
 
 /**
- * Ordered resolved form type factory test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
 {
-    /** @var \Ivory\OrderedForm\OrderedResolvedFormTypeFactory */
+    /**
+     * @var OrderedResolvedFormTypeFactory
+     */
     private $resolvedFactory;
 
-    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
+    /**
+     * @var FormOrdererInterface
+     */
     private $orderer;
 
     /**
@@ -33,15 +36,6 @@ class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
     {
         $this->orderer = $this->createMock('Ivory\OrderedForm\Orderer\FormOrdererInterface');
         $this->resolvedFactory = new OrderedResolvedFormTypeFactory($this->orderer);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->orderer);
-        unset($this->resolvedFactory);
     }
 
     public function testCreateWithOrderer()
@@ -63,9 +57,7 @@ class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
     }
 
     /**
-     * Creates a form type.
-     *
-     * @return \Symfony\Component\Form\AbstractType The form type.
+     * @return AbstractType
      */
     private function createFormType()
     {

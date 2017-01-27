@@ -12,16 +12,14 @@
 namespace Ivory\OrderedForm\Extension;
 
 /**
- * Ordered form button extension.
- *
- * @author tweini <tweini@gmail.com>
  * @author GeLo <geloen.eric@gmail.com>
+ * @author tweini <tweini@gmail.com>
  */
 class OrderedButtonExtension extends AbstractOrderedExtension
 {
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function getExtendedType()
     {
         return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')

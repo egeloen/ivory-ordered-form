@@ -11,23 +11,30 @@
 
 namespace Ivory\Tests\OrderedForm;
 
-use Ivory\OrderedForm\Orderer\FormOrderer;
 use Ivory\OrderedForm\OrderedResolvedFormType;
+use Ivory\OrderedForm\Orderer\FormOrderer;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormFactoryInterface;
 
 /**
- * Ordered resolved form type test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedResolvedFormTypeTest extends AbstractTestCase
 {
-    /** @var \Symfony\Component\EventDispatcher\EventDispatcher */
+    /**
+     * @var EventDispatcherInterface
+     */
     private $dispatcher;
 
-    /** @var \Symfony\Component\Form\FormFactoryInterface */
+    /**
+     * @var FormFactoryInterface
+     */
     private $factory;
 
-    /** @var \Ivory\OrderedForm\OrderedResolvedFormType */
+    /**
+     * @var OrderedResolvedFormType
+     */
     private $type;
 
     /**
@@ -44,17 +51,6 @@ class OrderedResolvedFormTypeTest extends AbstractTestCase
             array(),
             new OrderedResolvedFormType(new FormOrderer(), $this->createMockFormType())
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->dispatcher);
-        unset($this->factory);
-        unset($this->dataMapper);
-        unset($this->type);
     }
 
     public function testCreateBuilderWithButtonInnerType()
@@ -109,9 +105,7 @@ class OrderedResolvedFormTypeTest extends AbstractTestCase
     }
 
     /**
-     * Creates a form type mock.
-     *
-     * @return \Symfony\Component\Form\AbstractType The form type mock.
+     * @return AbstractType
      */
     private function createMockFormType()
     {
@@ -119,9 +113,7 @@ class OrderedResolvedFormTypeTest extends AbstractTestCase
     }
 
     /**
-     * Creates a form factory mock.
-     *
-     * @return \Symfony\Component\Form\FormFactoryInterface The form factory mock.
+     * @return FormFactoryInterface
      */
     private function createMockFormFactory()
     {

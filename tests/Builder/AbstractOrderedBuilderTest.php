@@ -11,16 +11,17 @@
 
 namespace Ivory\Tests\OrderedForm\Builder;
 
+use Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface;
 use Ivory\Tests\OrderedForm\AbstractTestCase;
 
 /**
- * Abstract ordered builder test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 abstract class AbstractOrderedBuilderTest extends AbstractTestCase
 {
-    /** @var \Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface */
+    /**
+     * @var OrderedFormConfigBuilderInterface
+     */
     private $builder;
 
     /**
@@ -32,17 +33,7 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->builder);
-    }
-
-    /**
-     * Creates an ordered builder.
-     *
-     * @return \Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface The ordered builder.
+     * @return OrderedFormConfigBuilderInterface
      */
     abstract protected function createOrderedBuilder();
 

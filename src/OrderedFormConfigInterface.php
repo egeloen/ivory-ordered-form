@@ -14,18 +14,12 @@ namespace Ivory\OrderedForm;
 use Symfony\Component\Form\FormConfigInterface;
 
 /**
- * Ordered form configuration.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 interface OrderedFormConfigInterface extends FormConfigInterface
 {
     /**
-     * Gets the form position.
-     *
-     * @see \Ivory\OrderedForm\OrderedFormConfigBuilderInterface::setPosition
-     *
-     * @return null|string|array The form position.
+     * @return string|array|null
      */
     public function getPosition();
 }

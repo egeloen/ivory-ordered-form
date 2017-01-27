@@ -26,17 +26,20 @@ use Symfony\Component\Form\ResolvedFormTypeInterface;
 use Symfony\Component\Form\SubmitButtonTypeInterface;
 
 /**
- * Ordered resolved form type.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedResolvedFormType extends ResolvedFormType
 {
-    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
+    /**
+     * @var FormOrdererInterface
+     */
     private $orderer;
 
     /**
-     * {@inheritdoc}
+     * @param FormOrdererInterface           $orderer
+     * @param FormTypeInterface              $innerType
+     * @param array                          $typeExtensions
+     * @param ResolvedFormTypeInterface|null $parent
      */
     public function __construct(
         FormOrdererInterface $orderer,

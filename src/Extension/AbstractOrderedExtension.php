@@ -17,8 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Abstract ordered extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 abstract class AbstractOrderedExtension extends AbstractTypeExtension
@@ -32,7 +30,7 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

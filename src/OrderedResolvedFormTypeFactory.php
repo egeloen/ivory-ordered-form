@@ -18,19 +18,17 @@ use Symfony\Component\Form\ResolvedFormTypeFactory;
 use Symfony\Component\Form\ResolvedFormTypeInterface;
 
 /**
- * Ordered resolved form type factory.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
 {
-    /** @var \Ivory\OrderedForm\Orderer\FormOrdererInterface */
+    /**
+     * @var FormOrdererInterface
+     */
     private $orderer;
 
     /**
-     * Creates an orderer resolved form type factory.
-     *
-     * @param \Ivory\OrderedForm\Orderer\FormOrdererInterface|null $orderer The form orderer.
+     * @param FormOrdererInterface|null $orderer
      */
     public function __construct(FormOrdererInterface $orderer = null)
     {

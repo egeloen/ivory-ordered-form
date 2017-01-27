@@ -2,6 +2,7 @@
 
 ### 2.0.1 (2015-12-12)
 
+ * 42b0463 - Add PHP-CS-Fixer support
  * cbe354b - [Travis] Fix the build
  * 9fde17c - [Scrutinizer] Fix code coverage configuration
  * 04923b6 - [Composer] Update deps

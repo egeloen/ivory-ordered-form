@@ -2,6 +2,7 @@
 
 ### 3.0.0 (2015-12-12)
 
+ * a893b5d - Bump Symfony to 2.7 + PHP to 5.6 + Add AppVeyor support
  * 23701d2 - [Docker] Add HHVM container
  * 0f2b3d8 - Add docker support
  * 42b0463 - Add PHP-CS-Fixer support

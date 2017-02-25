@@ -108,7 +108,7 @@ class OrderedConfigurationException extends InvalidConfigurationException
      */
     private static function decorateValues(array $values, $decorator = '"')
     {
-        $result = array();
+        $result = [];
 
         foreach ($values as $key => $value) {
             $result[$key] = self::decorateValue($value, $decorator);

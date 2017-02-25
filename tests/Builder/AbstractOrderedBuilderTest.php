@@ -12,6 +12,7 @@
 namespace Ivory\Tests\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface;
+use Ivory\OrderedForm\OrderedFormConfigInterface;
 use Ivory\Tests\OrderedForm\AbstractTestCase;
 
 /**
@@ -39,8 +40,8 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
 
     public function testDefaultState()
     {
-        $this->assertInstanceOf('\Ivory\OrderedForm\OrderedFormConfigInterface', $this->builder);
-        $this->assertInstanceOf('\Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface', $this->builder);
+        $this->assertInstanceOf(OrderedFormConfigInterface::class, $this->builder);
+        $this->assertInstanceOf(OrderedFormConfigBuilderInterface::class, $this->builder);
 
         $this->assertNull($this->builder->getPosition());
     }
@@ -71,16 +72,16 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
 
     public function testBeforePosition()
     {
-        $this->builder->setPosition(array('before' => 'foo'));
+        $this->builder->setPosition(['before' => 'foo']);
 
-        $this->assertSame(array('before' => 'foo'), $this->builder->getPosition());
+        $this->assertSame(['before' => 'foo'], $this->builder->getPosition());
     }
 
     public function testAfterPosition()
     {
-        $this->builder->setPosition(array('after' => 'foo'));
+        $this->builder->setPosition(['after' => 'foo']);
 
-        $this->assertSame(array('after' => 'foo'), $this->builder->getPosition());
+        $this->assertSame(['after' => 'foo'], $this->builder->getPosition());
     }
 
     public function testFluentInterface()
@@ -103,6 +104,6 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
      */
     public function testInvalidArrayPosition()
     {
-        $this->builder->setPosition(array('bar' => 'baz'));
+        $this->builder->setPosition(['bar' => 'baz']);
     }
 }

@@ -11,6 +11,9 @@
 
 namespace Ivory\OrderedForm\Extension;
 
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+
 /**
  * @author GeLo <geloen.eric@gmail.com>
  * @author tweini <tweini@gmail.com>
@@ -22,8 +25,6 @@ class OrderedButtonExtension extends AbstractOrderedExtension
      */
     public function getExtendedType()
     {
-        return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\ButtonType'
-            : 'button';
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? ButtonType::class : 'button';
     }
 }

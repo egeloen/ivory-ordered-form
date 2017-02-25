@@ -11,8 +11,10 @@
 
 namespace Ivory\Tests\OrderedForm;
 
+use Ivory\OrderedForm\OrderedResolvedFormType;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Orderer\FormOrdererInterface;
+use Symfony\Component\Form\AbstractType;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -34,15 +36,15 @@ class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
      */
     protected function setUp()
     {
-        $this->orderer = $this->createMock('Ivory\OrderedForm\Orderer\FormOrdererInterface');
+        $this->orderer = $this->createMock(FormOrdererInterface::class);
         $this->resolvedFactory = new OrderedResolvedFormTypeFactory($this->orderer);
     }
 
     public function testCreateWithOrderer()
     {
         $this->assertInstanceOf(
-            'Ivory\OrderedForm\OrderedResolvedFormType',
-            $this->resolvedFactory->createResolvedType($this->createFormType(), array())
+            OrderedResolvedFormType::class,
+            $this->resolvedFactory->createResolvedType($this->createFormType(), [])
         );
     }
 
@@ -51,16 +53,16 @@ class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
         $this->resolvedFactory = new OrderedResolvedFormTypeFactory();
 
         $this->assertInstanceOf(
-            'Ivory\OrderedForm\OrderedResolvedFormType',
-            $this->resolvedFactory->createResolvedType($this->createFormType(), array())
+            OrderedResolvedFormType::class,
+            $this->resolvedFactory->createResolvedType($this->createFormType(), [])
         );
     }
 
     /**
-     * @return AbstractType
+     * @return AbstractType|\PHPUnit_Framework_MockObject_MockObject
      */
     private function createFormType()
     {
-        return $this->createMock('Symfony\Component\Form\AbstractType');
+        return $this->createMock(AbstractType::class);
     }
 }

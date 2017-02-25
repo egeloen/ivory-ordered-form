@@ -23,9 +23,9 @@ class OrderedExtension extends AbstractExtension
      */
     protected function loadTypeExtensions()
     {
-        return array(
+        return [
             new OrderedFormExtension(),
             new OrderedButtonExtension(),
-        );
+        ];
     }
 }

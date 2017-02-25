@@ -15,6 +15,9 @@ use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\Tests\OrderedForm\AbstractTestCase;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Forms;
 
 /**
@@ -58,7 +61,7 @@ class OrderedExtensionTest extends AbstractTestCase
      */
     public function testStringPosition($type)
     {
-        $form = $this->builder->create('foo', $type, array('position' => 'first'))->getForm();
+        $form = $this->builder->create('foo', $type, ['position' => 'first'])->getForm();
 
         $this->assertSame('first', $form->getConfig()->getPosition());
     }
@@ -70,9 +73,9 @@ class OrderedExtensionTest extends AbstractTestCase
      */
     public function testArrayPosition($type)
     {
-        $form = $this->builder->create('foo', $type, array('position' => array('before' => 'bar')))->getForm();
+        $form = $this->builder->create('foo', $type, ['position' => ['before' => 'bar']])->getForm();
 
-        $this->assertSame(array('before' => 'bar'), $form->getConfig()->getPosition());
+        $this->assertSame(['before' => 'bar'], $form->getConfig()->getPosition());
     }
 
     /**
@@ -80,11 +83,11 @@ class OrderedExtensionTest extends AbstractTestCase
      */
     public function formTypeProvider()
     {
-        $fqcn = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix');
+        $preferFqcn = method_exists(AbstractType::class, 'getBlockPrefix');
 
-        return array(
-            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\TextType' : 'text'),
-            array($fqcn ? 'Symfony\Component\Form\Extension\Core\Type\ButtonType' : 'button'),
-        );
+        return [
+            [$preferFqcn ? TextType::class : 'text'],
+            [$preferFqcn ? ButtonType::class : 'button'],
+        ];
     }
 }

@@ -12,6 +12,8 @@
 namespace Ivory\Tests\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Builder\OrderedFormBuilder;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -26,8 +28,8 @@ class OrderedFormBuilderTest extends AbstractOrderedBuilderTest
         return new OrderedFormBuilder(
             'foo',
             null,
-            $this->createMock('Symfony\Component\EventDispatcher\EventDispatcherInterface'),
-            $this->createMock('Symfony\Component\Form\FormFactoryInterface')
+            $this->createMock(EventDispatcherInterface::class),
+            $this->createMock(FormFactoryInterface::class)
         );
     }
 }

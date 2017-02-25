@@ -44,7 +44,7 @@ class OrderedResolvedFormType extends ResolvedFormType
     public function __construct(
         FormOrdererInterface $orderer,
         FormTypeInterface $innerType,
-        array $typeExtensions = array(),
+        array $typeExtensions = [],
         ResolvedFormTypeInterface $parent = null
     ) {
         parent::__construct($innerType, $typeExtensions, $parent);
@@ -60,7 +60,7 @@ class OrderedResolvedFormType extends ResolvedFormType
         parent::finishView($view, $form, $options);
 
         $children = $view->children;
-        $view->children = array();
+        $view->children = [];
 
         foreach ($this->orderer->order($form) as $name) {
             if (!isset($children[$name])) {

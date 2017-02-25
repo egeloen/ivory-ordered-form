@@ -226,7 +226,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws OrderedConfigurationException
      */
-    private function detectCircularDiffered($name, $position, array $stack = array())
+    private function detectCircularDiffered($name, $position, array $stack = [])
     {
         if (!isset($this->differed[$position][$name])) {
             return;
@@ -267,11 +267,11 @@ class FormOrderer implements FormOrdererInterface
 
     private function reset()
     {
-        $this->weights = array();
-        $this->differed = array(
-            'before' => array(),
-            'after'  => array(),
-        );
+        $this->weights = [];
+        $this->differed = [
+            'before' => [],
+            'after'  => [],
+        ];
 
         $this->firstWeight = 0;
         $this->currentWeight = 0;

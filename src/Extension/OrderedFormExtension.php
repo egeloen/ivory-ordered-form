@@ -11,6 +11,9 @@
 
 namespace Ivory\OrderedForm\Extension;
 
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
@@ -21,8 +24,6 @@ class OrderedFormExtension extends AbstractOrderedExtension
      */
     public function getExtendedType()
     {
-        return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\FormType'
-            : 'form';
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form';
     }
 }

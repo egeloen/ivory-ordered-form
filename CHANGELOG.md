@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 2.0.1 (2015-12-12)
+### 3.0.0 (2015-12-12)
 
  * 23701d2 - [Docker] Add HHVM container
  * 0f2b3d8 - Add docker support

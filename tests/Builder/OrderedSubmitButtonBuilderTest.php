@@ -23,6 +23,6 @@ class OrderedSubmitButtonBuilderTest extends AbstractOrderedBuilderTest
      */
     protected function createOrderedBuilder()
     {
-        return new OrderedSubmitButtonBuilder('foo', array());
+        return new OrderedSubmitButtonBuilder('foo', []);
     }
 }

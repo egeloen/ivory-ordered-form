@@ -1,7 +1,8 @@
 # CHANGELOG
 
-### 3.0.0 (2015-12-12)
+### 3.0.0 (????-??-??)
 
+ * 872878d - [UPGRADE] Notify about PHP and Symfony bump
  * a893b5d - Bump Symfony to 2.7 + PHP to 5.6 + Add AppVeyor support
  * 23701d2 - [Docker] Add HHVM container
  * 0f2b3d8 - Add docker support

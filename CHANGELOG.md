@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 3.0.0 (????-??-??)
+### 3.0.0 (2017-02-27)
 
  * 872878d - [UPGRADE] Notify about PHP and Symfony bump
  * a893b5d - Bump Symfony to 2.7 + PHP to 5.6 + Add AppVeyor support

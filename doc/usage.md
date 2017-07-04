@@ -19,6 +19,9 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new OrderedExtension())
     ->getFormFactory();
 
+// To inherit the default symfony extensions, add the extension "form.extension"
+// eg. ->addExtension($this->get('form.extension'))
+
 $form = $formFactory->createBuilder()
     ->add('dueDate', 'date')
     ->add('task', 'text', array('position' => 'first'))

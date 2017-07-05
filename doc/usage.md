@@ -5,6 +5,22 @@ Before starting, if you're not already familiar with the Symfony2 form component
 
 ## Set up
 
+### Register services
+
+If you would like to use the default symfony 'form.factory' service. 
+
+``` yaml
+services:
+    form.resolved_type_factory:
+        class: Ivory\OrderedForm\OrderedResolvedFormTypeFactory
+
+    ordered.extension:
+        class: Ivory\OrderedForm\Extension\OrderedExtension
+        tags:
+          - { name: form.type_extension }
+```
+
+
 ### Default orderer
 
 To make the library working, you need to set up the Symfony2 form component the right way:

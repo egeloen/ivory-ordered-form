@@ -5,6 +5,29 @@ Before starting, if you're not already familiar with the Symfony2 form component
 
 ## Set up
 
+### Override services
+
+If you would like to use the default symfony 'form.factory' service. Add the following service definitions to your projects services.yml
+
+``` yaml
+services:
+    ordered.form.type.factory:
+        class: Ivory\OrderedForm\OrderedResolvedFormTypeFactory
+
+    ordered.extension:
+        class: Ivory\OrderedForm\Extension\OrderedExtension
+        tags:
+          - { name: form.type_extension }
+
+    ordered.registry:
+        class: Symfony\Component\Form\FormRegistry
+        arguments: [["@form.extension", "@ordered.extension"], "@ordered.form.type.factory"]
+
+    form.factory:
+        class: Symfony\Component\Form\FormFactory
+        arguments: [ "@ordered.registry", "@ordered.form.type.factory" ]
+```
+
 ### Default orderer
 
 To make the library working, you need to set up the Symfony2 form component the right way:
@@ -18,6 +41,9 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
     ->addExtension(new OrderedExtension())
     ->getFormFactory();
+
+// To inherit the default symfony extensions, add the extension "form.extension"
+// eg. ->addExtension($this->get('form.extension'))
 
 $form = $formFactory->createBuilder()
     ->add('dueDate', 'date')

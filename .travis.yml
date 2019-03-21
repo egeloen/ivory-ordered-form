@@ -39,6 +39,18 @@ matrix:
           env: SYMFONY_VERSION=3.2.*
         - php: 5.6
           env: SYMFONY_VERSION=3.3.*@dev
+        - php: 7.1
+          env: SYMFONY_VERSION=4.* COMPOSER_PREFER_LOWEST=true
+        - php: 7.2
+          env: SYMFONY_VERSION=4.* COMPOSER_PREFER_LOWEST=true
+        - php: 7.3
+          env: SYMFONY_VERSION=4.* COMPOSER_PREFER_LOWEST=true
+        - php: 7.1
+          env: SYMFONY_VERSION=4.*
+        - php: 7.2
+          env: SYMFONY_VERSION=4.*
+        - php: 7.3
+          env: SYMFONY_VERSION=4.*
     allow_failures:
         - env: SYMFONY_VERSION=3.3.*@dev
 

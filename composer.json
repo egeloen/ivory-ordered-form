@@ -1,7 +1,7 @@
 {
-    "name": "egeloen/ordered-form",
-    "description": "Provides a form ordering support with the Symfony2 form component.",
-    "keywords": [ "symfony2", "form", "order" ],
+    "name": "shopsys/ordered-form",
+    "description": "Provides a form ordering support with the Symfony Form component.",
+    "keywords": [ "symfony", "form", "order" ],
     "license": "MIT",
     "authors": [
         {
@@ -10,23 +10,18 @@
         }
     ],
     "require": {
-        "php": "^5.6|^7.0",
-        "symfony/form": "^2.7|^3.0|^4.0"
+        "php": "^7.2",
+        "symfony/form": "^3.0|^4.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.0",
-        "phpunit/phpunit": "^5.0",
-        "symfony/phpunit-bridge": "^2.7|^3.0|^4.0"
+        "phpunit/phpunit": "^7.0",
+        "symfony/phpunit-bridge": "^3.0|^4.0"
     },
     "autoload": {
         "psr-4": { "Ivory\\OrderedForm\\": "src/" }
     },
     "autoload-dev": {
         "psr-4": { "Ivory\\Tests\\OrderedForm\\": "tests/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.0-dev"
-        }
     }
 }

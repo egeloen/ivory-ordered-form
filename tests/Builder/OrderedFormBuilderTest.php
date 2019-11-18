@@ -25,11 +25,15 @@ class OrderedFormBuilderTest extends AbstractOrderedBuilderTest
      */
     protected function createOrderedBuilder()
     {
+        /** @var EventDispatcherInterface $eventDispacherMock */
+        $eventDispacherMock = $this->createMock(EventDispatcherInterface::class);
+        /** @var FormFactoryInterface $formFactoryMock */
+        $formFactoryMock = $this->createMock(FormFactoryInterface::class);
         return new OrderedFormBuilder(
             'foo',
             null,
-            $this->createMock(EventDispatcherInterface::class),
-            $this->createMock(FormFactoryInterface::class)
+            $eventDispacherMock,
+            $formFactoryMock
         );
     }
 }

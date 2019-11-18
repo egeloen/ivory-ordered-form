@@ -14,7 +14,7 @@ namespace Ivory\Tests\OrderedForm\Extension;
 use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
-use Ivory\Tests\OrderedForm\AbstractTestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +23,7 @@ use Symfony\Component\Form\Forms;
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedExtensionTest extends AbstractTestCase
+class OrderedExtensionTest extends TestCase
 {
     /**
      * @var OrderedFormBuilder

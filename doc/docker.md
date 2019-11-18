@@ -1,7 +1,7 @@
 # Docker
 
 The most easy way to set up the project is to install [Docker](https://www.docker.com) and
-[Docker Composer](https://docs.docker.com/compose/) and build the project.
+[Docker Compose](https://docs.docker.com/compose/) and build the project.
 
 ## Configure
 
@@ -36,12 +36,6 @@ To run the test suite, you can use:
 
 ``` bash
 $ docker-compose run --rm php vendor/bin/phpunit
-```
-
-If you want to run the test suite against [HHVM](http://hhvm.com/), you can use:
-
-``` bash
-$ docker-compose run --rm hhvm vendor/bin/phpunit
 ```
 
 ## XDebug

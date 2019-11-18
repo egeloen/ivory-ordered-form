@@ -16,17 +16,19 @@ use Ivory\OrderedForm\Extension\OrderedExtension;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\Tests\OrderedForm\Fixtures\ExtraChildrenViewExtension;
 use Ivory\Tests\OrderedForm\Fixtures\RemoveChildrenViewExtension;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\FormView;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedFormFunctionnalTest extends AbstractTestCase
+class OrderedFormFunctionnalTest extends TestCase
 {
     /**
      * @var FormFactoryBuilderInterface
@@ -63,19 +65,14 @@ class OrderedFormFunctionnalTest extends AbstractTestCase
 
     /**
      * @param array       $config
-     * @param string|null $exceptionMessage
+     * @param string $exceptionMessage
      *
      * @dataProvider getInvalidPositions
      */
-    public function testInvalidPosition(array $config, $exceptionMessage = null)
+    public function testInvalidPosition(array $config, $exceptionMessage)
     {
-        $exceptionName = OrderedConfigurationException::class;
-
-        if ($exceptionMessage !== null) {
-            $this->expectException($exceptionName, $exceptionMessage);
-        } else {
-            $this->expectException($exceptionName);
-        }
+        $this->expectException(OrderedConfigurationException::class);
+        $this->expectExceptionMessage($exceptionMessage);
 
         $this->createForm($config)->createView();
     }

@@ -3,7 +3,7 @@
 Require the library in your ``composer.json`` file:
 
 ``` bash
-$ composer require egeloen/ordered-form
+$ composer require shopsys/ordered-form
 ```
 
 So easy, you're already ready to play with the library!

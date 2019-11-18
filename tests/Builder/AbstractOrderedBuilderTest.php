@@ -12,13 +12,15 @@
 namespace Ivory\Tests\OrderedForm\Builder;
 
 use Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface;
+use Ivory\OrderedForm\Exception\OrderedConfigurationException;
 use Ivory\OrderedForm\OrderedFormConfigInterface;
-use Ivory\Tests\OrderedForm\AbstractTestCase;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Form\Exception\BadMethodCallException;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-abstract class AbstractOrderedBuilderTest extends AbstractTestCase
+abstract class AbstractOrderedBuilderTest extends TestCase
 {
     /**
      * @var OrderedFormConfigBuilderInterface
@@ -46,12 +48,11 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
         $this->assertNull($this->builder->getPosition());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Form\Exception\BadMethodCallException
-     * @expectedExceptionMessage The config builder cannot be modified anymore.
-     */
     public function testLockedPosition()
     {
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessage('The config builder cannot be modified anymore.');
+
         $config = $this->builder->getFormConfig();
         $config->setPosition('first');
     }
@@ -89,21 +90,19 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
         $this->assertSame($this->builder, $this->builder->setPosition('first'));
     }
 
-    /**
-     * @expectedException \Ivory\OrderedForm\Exception\OrderedConfigurationException
-     * @expectedExceptionMessage The "foo" form uses position as string which can only be "first" or "last" (current: "foo").
-     */
     public function testInvalidStringPosition()
     {
+        $this->expectException(OrderedConfigurationException::class);
+        $this->expectExceptionMessage('The "foo" form uses position as string which can only be "first" or "last" (current: "foo").');
+
         $this->builder->setPosition('foo');
     }
 
-    /**
-     * @expectedException \Ivory\OrderedForm\Exception\OrderedConfigurationException
-     * @expectedExceptionMessage The "foo" form uses position as array or you must define the "before" or "after" option (current: "bar").
-     */
     public function testInvalidArrayPosition()
     {
+        $this->expectException(OrderedConfigurationException::class);
+        $this->expectExceptionMessage('The "foo" form uses position as array or you must define the "before" or "after" option (current: "bar").');
+
         $this->builder->setPosition(['bar' => 'baz']);
     }
 }

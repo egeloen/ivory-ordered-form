@@ -1,13 +1,13 @@
 # Usage
 
-Before starting, if you're not already familiar with the Symfony2 form component, I recommend you to read this
+Before starting, if you're not already familiar with the Symfony form component, I recommend you to read this
 [documentation](http://symfony.com/doc/current/components/form/introduction.html).
 
 ## Set up
 
 ### Default orderer
 
-To make the library working, you need to set up the Symfony2 form component the right way:
+To make the library working, you need to set up the Symfony form component the right way:
 
 ``` php
 use Symfony\Component\Form\Forms;

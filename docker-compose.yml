@@ -11,6 +11,3 @@ services:
         volumes:
             - ~/.composer:/var/www/.composer
             - .:/var/www/html
-    hhvm:
-        <<: *php
-        build: docker/hhvm

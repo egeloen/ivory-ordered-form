@@ -14,12 +14,14 @@ namespace Ivory\Tests\OrderedForm;
 use Ivory\OrderedForm\OrderedResolvedFormType;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use Ivory\OrderedForm\Orderer\FormOrdererInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\AbstractType;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
+class OrderedResolvedFormTypeFactoryTest extends TestCase
 {
     /**
      * @var OrderedResolvedFormTypeFactory
@@ -59,7 +61,7 @@ class OrderedResolvedFormTypeFactoryTest extends AbstractTestCase
     }
 
     /**
-     * @return AbstractType|\PHPUnit_Framework_MockObject_MockObject
+     * @return AbstractType|MockObject
      */
     private function createFormType()
     {

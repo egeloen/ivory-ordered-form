@@ -41,7 +41,7 @@ class OrderedResolvedFormTypeTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->factory = $this->createMock(FormFactoryInterface::class);

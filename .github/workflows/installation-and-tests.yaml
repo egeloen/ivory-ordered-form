@@ -1,0 +1,21 @@
+on: [push]
+name: "Installation and tests"
+jobs:
+  installation-and-tests:
+    name: Install application and run tests
+    runs-on: 'ubuntu-20.04'
+    steps:
+      - name: Setup
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: zip
+          tools: composer:v2
+      - name: GIT checkout branch - ${{ github.ref }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Install composer dependencies
+        run: composer update --prefer-source
+      - name: Run tests
+        run: vendor/bin/phpunit

@@ -43,7 +43,7 @@ class OrderedFormFunctionnalTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->factoryBuilder = Forms::createFormFactoryBuilder()
             ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())

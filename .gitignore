@@ -11,3 +11,7 @@
 # PHPUnit
 /phpunit.xml
 /build
+/.phpunit.result.cache
+
+# PHPStorm
+/.idea

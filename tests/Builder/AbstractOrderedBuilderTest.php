@@ -22,10 +22,7 @@ use Symfony\Component\Form\Exception\BadMethodCallException;
  */
 abstract class AbstractOrderedBuilderTest extends TestCase
 {
-    /**
-     * @var OrderedFormConfigBuilderInterface
-     */
-    private $builder;
+    private OrderedFormConfigInterface&OrderedFormConfigBuilderInterface $builder;
 
     /**
      * {@inheritdoc}
@@ -35,12 +32,9 @@ abstract class AbstractOrderedBuilderTest extends TestCase
         $this->builder = $this->createOrderedBuilder();
     }
 
-    /**
-     * @return OrderedFormConfigBuilderInterface
-     */
-    abstract protected function createOrderedBuilder();
+    abstract protected function createOrderedBuilder(): OrderedFormConfigInterface&OrderedFormConfigBuilderInterface;
 
-    public function testDefaultState()
+    public function testDefaultState(): void
     {
         $this->assertInstanceOf(OrderedFormConfigInterface::class, $this->builder);
         $this->assertInstanceOf(OrderedFormConfigBuilderInterface::class, $this->builder);
@@ -48,49 +42,50 @@ abstract class AbstractOrderedBuilderTest extends TestCase
         $this->assertNull($this->builder->getPosition());
     }
 
-    public function testLockedPosition()
+    public function testLockedPosition(): void
     {
         $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('The config builder cannot be modified anymore.');
 
+        /** @var OrderedFormConfigBuilderInterface $config */
         $config = $this->builder->getFormConfig();
         $config->setPosition('first');
     }
 
-    public function testFirstPosition()
+    public function testFirstPosition(): void
     {
         $this->builder->setPosition('first');
 
         $this->assertSame('first', $this->builder->getPosition());
     }
 
-    public function testLastPosition()
+    public function testLastPosition(): void
     {
         $this->builder->setPosition('last');
 
         $this->assertSame('last', $this->builder->getPosition());
     }
 
-    public function testBeforePosition()
+    public function testBeforePosition(): void
     {
         $this->builder->setPosition(['before' => 'foo']);
 
         $this->assertSame(['before' => 'foo'], $this->builder->getPosition());
     }
 
-    public function testAfterPosition()
+    public function testAfterPosition(): void
     {
         $this->builder->setPosition(['after' => 'foo']);
 
         $this->assertSame(['after' => 'foo'], $this->builder->getPosition());
     }
 
-    public function testFluentInterface()
+    public function testFluentInterface(): void
     {
         $this->assertSame($this->builder, $this->builder->setPosition('first'));
     }
 
-    public function testInvalidStringPosition()
+    public function testInvalidStringPosition(): void
     {
         $this->expectException(OrderedConfigurationException::class);
         $this->expectExceptionMessage('The "foo" form uses position as string which can only be "first" or "last" (current: "foo").');
@@ -98,7 +93,7 @@ abstract class AbstractOrderedBuilderTest extends TestCase
         $this->builder->setPosition('foo');
     }
 
-    public function testInvalidArrayPosition()
+    public function testInvalidArrayPosition(): void
     {
         $this->expectException(OrderedConfigurationException::class);
         $this->expectExceptionMessage('The "foo" form uses position as array or you must define the "before" or "after" option (current: "bar").');

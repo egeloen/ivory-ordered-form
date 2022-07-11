@@ -26,7 +26,7 @@
         "psr-4": { "Ivory\\Tests\\OrderedForm\\": "tests/" }
     },
     "scripts": {
-        "phpstan": "phpstan analyse --level=5 src",
+        "phpstan": "phpstan analyse --level=5 src tests",
         "tests": "SYMFONY_DEPRECATIONS_HELPER=weak phpunit"
     }
 }

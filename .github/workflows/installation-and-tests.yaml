@@ -18,4 +18,6 @@ jobs:
       - name: Install composer dependencies
         run: composer update --prefer-source
       - name: Run tests
-        run: vendor/bin/phpunit
+        run: composer tests
+      - name: Run PhpStan
+        run: composer phpstan

@@ -12,6 +12,7 @@
 namespace Ivory\OrderedForm\Orderer;
 
 use Ivory\OrderedForm\Exception\OrderedConfigurationException;
+use Ivory\OrderedForm\OrderedFormConfigInterface;
 use Symfony\Component\Form\FormInterface;
 
 /**
@@ -52,7 +53,9 @@ class FormOrderer implements FormOrdererInterface
         $this->reset();
 
         foreach ($form as $child) {
-            $position = $child->getConfig()->getPosition();
+            /** @var OrderedFormConfigInterface $formConfig */
+            $formConfig = $child->getConfig();
+            $position = $formConfig->getPosition();
 
             if (empty($position)) {
                 $this->processEmptyPosition($child);

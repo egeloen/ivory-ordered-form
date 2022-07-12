@@ -13,6 +13,7 @@ namespace Ivory\Tests\OrderedForm\Extension;
 
 use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Ivory\OrderedForm\Extension\OrderedExtension;
+use Ivory\OrderedForm\OrderedFormConfigInterface;
 use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\AbstractType;
@@ -25,63 +26,64 @@ use Symfony\Component\Form\Forms;
  */
 class OrderedExtensionTest extends TestCase
 {
-    /**
-     * @var OrderedFormBuilder
-     */
-    private $builder;
+    private OrderedFormBuilder $builder;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
-        $this->builder = Forms::createFormFactoryBuilder()
+        $builder = Forms::createFormFactoryBuilder()
             ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
             ->addExtension(new OrderedExtension())
             ->getFormFactory()
             ->createBuilder();
+
+        assert($builder instanceof OrderedFormBuilder);
+
+        $this->builder = $builder;
     }
 
     /**
-     * @param string $type
-     *
      * @dataProvider formTypeProvider
      */
-    public function testEmptyPosition($type)
+    public function testEmptyPosition(string $type): void
     {
         $form = $this->builder->create('foo', $type)->getForm();
 
-        $this->assertNull($form->getConfig()->getPosition());
+        /** @var OrderedFormConfigInterface $formConfig */
+        $formConfig = $form->getConfig();
+
+        $this->assertNull($formConfig->getPosition());
     }
 
     /**
-     * @param string $type
-     *
      * @dataProvider formTypeProvider
      */
-    public function testStringPosition($type)
+    public function testStringPosition(string $type): void
     {
         $form = $this->builder->create('foo', $type, ['position' => 'first'])->getForm();
 
-        $this->assertSame('first', $form->getConfig()->getPosition());
+        /** @var OrderedFormConfigInterface $formConfig */
+        $formConfig = $form->getConfig();
+
+        $this->assertSame('first', $formConfig->getPosition());
     }
 
     /**
-     * @param string $type
-     *
      * @dataProvider formTypeProvider
      */
-    public function testArrayPosition($type)
+    public function testArrayPosition(string $type): void
     {
         $form = $this->builder->create('foo', $type, ['position' => ['before' => 'bar']])->getForm();
 
-        $this->assertSame(['before' => 'bar'], $form->getConfig()->getPosition());
+        /** @var OrderedFormConfigInterface $formConfig */
+        $formConfig = $form->getConfig();
+
+        $this->assertSame(['before' => 'bar'], $formConfig->getPosition());
     }
 
     /**
-     * @return array
+     * @return array<int, array<int, string>>
      */
-    public function formTypeProvider()
+    public function formTypeProvider(): array
     {
         $preferFqcn = method_exists(AbstractType::class, 'getBlockPrefix');
 

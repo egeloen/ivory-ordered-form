@@ -11,6 +11,7 @@
 
 namespace Ivory\OrderedForm\Extension;
 
+use Ivory\OrderedForm\Builder\OrderedFormBuilder;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,7 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 abstract class AbstractOrderedExtension extends AbstractTypeExtension
 {
     /**
-     * {@inheritdoc}
+     * @param OrderedFormBuilder $builder
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

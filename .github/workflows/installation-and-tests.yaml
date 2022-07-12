@@ -4,6 +4,10 @@ jobs:
   installation-and-tests:
     name: Install application and run tests
     runs-on: 'ubuntu-20.04'
+    strategy:
+      matrix:
+        composer-preferred-dependencies: [ '--prefer-lowest', '' ]
+      fail-fast: false
     steps:
       - name: Setup
         uses: shivammathur/setup-php@v2
@@ -16,6 +20,8 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Install composer dependencies
-        run: composer update --prefer-source
+        run: composer update --optimize-autoloader --no-interaction ${{ matrix.composer-preferred-dependencies }}
       - name: Run tests
-        run: vendor/bin/phpunit
+        run: composer tests
+      - name: Run PhpStan
+        run: composer phpstan

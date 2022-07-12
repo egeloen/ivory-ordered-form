@@ -16,7 +16,6 @@ use Ivory\OrderedForm\OrderedResolvedFormType;
 use Ivory\OrderedForm\Orderer\FormOrderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,25 +27,6 @@ use Symfony\Component\Form\FormTypeInterface;
  */
 class OrderedResolvedFormTypeTest extends TestCase
 {
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $dispatcher;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        $this->dispatcher = $this->createMock(EventDispatcherInterface::class);
-        $this->factory = $this->createMock(FormFactoryInterface::class);
-    }
-
     private function getOrderedResolvedFormTypeByFormType(FormTypeInterface $formType): OrderedResolvedFormType
     {
         return new OrderedResolvedFormType(

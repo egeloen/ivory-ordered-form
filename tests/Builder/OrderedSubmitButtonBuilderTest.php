@@ -11,17 +11,16 @@
 
 namespace Ivory\Tests\OrderedForm\Builder;
 
+use Ivory\OrderedForm\Builder\OrderedFormConfigBuilderInterface;
 use Ivory\OrderedForm\Builder\OrderedSubmitButtonBuilder;
+use Ivory\OrderedForm\OrderedFormConfigInterface;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
 class OrderedSubmitButtonBuilderTest extends AbstractOrderedBuilderTest
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function createOrderedBuilder()
+    protected function createOrderedBuilder(): OrderedFormConfigInterface&OrderedFormConfigBuilderInterface
     {
         return new OrderedSubmitButtonBuilder('foo', []);
     }

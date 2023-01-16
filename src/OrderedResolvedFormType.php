@@ -17,6 +17,7 @@ use Ivory\OrderedForm\Builder\OrderedSubmitButtonBuilder;
 use Ivory\OrderedForm\Orderer\FormOrdererInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\ButtonTypeInterface;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormTypeInterface;
@@ -79,7 +80,7 @@ class OrderedResolvedFormType extends ResolvedFormType
     /**
      * {@inheritdoc}
      */
-    protected function newBuilder($name, $dataClass, FormFactoryInterface $factory, array $options)
+    protected function newBuilder($name, $dataClass, FormFactoryInterface $factory, array $options): FormBuilderInterface
     {
         $innerType = $this->getInnerType();
 

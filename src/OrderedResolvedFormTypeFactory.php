@@ -42,7 +42,7 @@ class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
         FormTypeInterface $type,
         array $typeExtensions,
         ResolvedFormTypeInterface $parent = null
-    ) {
+    ): ResolvedFormTypeInterface {
         return new OrderedResolvedFormType($this->orderer, $type, $typeExtensions, $parent);
     }
 }
